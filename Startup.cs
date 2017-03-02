@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
+using DotNetVideosCore.Repositories;
+using DotNetVideosCore.Interfaces.Repositories;
 
 namespace DotNetVideosCore
 {
@@ -30,6 +33,16 @@ namespace DotNetVideosCore
         {
             // Add framework services.
             services.AddMvc();
+
+            //var config = new AutoMapper.MapperConfiguration( cfg =>
+            //{
+            //    cfg.CreateMap<DotNetVideosCore.Dtos.VideoDto, DotNetVideosCore.Models.Video>();
+            //    cfg.CreateMap<DotNetVideosCore.Models.Video, DotNetVideosCore.Dtos.VideoDto>();
+            //});
+            //var mapper = config.CreateMapper();
+            services.AddAutoMapper();
+
+            services.AddTransient<IVideosRepository, VideosRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

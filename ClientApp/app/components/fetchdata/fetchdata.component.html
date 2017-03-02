@@ -1,24 +1,22 @@
-<h1>Weather forecast</h1>
+<h1>Videos Sample</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p>This component shows a simple fetching of Web API data.</p>
 
-<p *ngIf="!forecasts"><em>Loading...</em></p>
+<p *ngIf="!videos"><em>Loading...</em></p>
 
-<table class='table' *ngIf="forecasts">
+<table class='table' *ngIf="videos">
     <thead>
         <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Created</th>
+            <th>Category</th>
+            <th>Name</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let forecast of forecasts">
-            <td>{{ forecast.dateFormatted }}</td>
-            <td>{{ forecast.temperatureC }}</td>
-            <td>{{ forecast.temperatureF }}</td>
-            <td>{{ forecast.summary }}</td>
+        <tr *ngFor="let video of videos">
+            <td>{{ video.createdDate }}</td>
+            <td>{{ video.category }}</td>
+            <td>{{ video.name }}</td>
         </tr>
     </tbody>
 </table>
