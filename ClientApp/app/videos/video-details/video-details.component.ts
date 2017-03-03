@@ -1,4 +1,4 @@
-import {Component, Injectable, Input, OnInit} from 'angular2/core';
+import {Component, Injectable, Input, OnInit} from '@angular/core';
 import {FORM_DIRECTIVES, FormBuilder, ControlGroup, AbstractControl, Control, Validators} from 'angular2/common';
 import {RouteParams} from 'angular2/router';
 import {EnumKeysPipe} from '../../shared/pipes/enum.keys.pipe';
