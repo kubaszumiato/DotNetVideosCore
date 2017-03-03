@@ -1,8 +1,7 @@
 //ng2
-import {Component, Injectable, OnInit} from 'angular2/core'; //View
-import {NgFor} from 'angular2/common';
-import {HTTP_PROVIDERS} from 'angular2/http';
-import {Router} from 'angular2/router';
+import {Component, Injectable, OnInit} from '@angular/core'; //View
+import {NgFor} from '@angular/common';
+import {Router} from '@angular/router';
 
 import {VideoService} from '../video.services';
 import {IVideo} from '../../../../shared/data-models/video.model.interfaces'
@@ -10,7 +9,7 @@ import {VideoDetailsComponent} from './video-details.component';
 @Component(
     {
         selector: 'video-list',
-        providers: [...HTTP_PROVIDERS, VideoService, VideoDetailsComponent],
+        providers: [... HTTP_PROVIDERS, VideoService, VideoDetailsComponent],
         directives: [VideoDetailsComponent],
         template: require('./video-list.component.html')
     })

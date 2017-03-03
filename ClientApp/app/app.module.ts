@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UniversalModule } from 'angular2-universal';
-import { AppComponent } from './components/app/app.component'
-import { NavMenuComponent } from './components/navmenu/navmenu.component';
-import { HomeComponent } from './components/home/home.component';
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
+import { AppComponent } from './app/app.component'
+import { NavMenuComponent } from './navmenu/navmenu.component';
+import { HomeComponent } from './home/home.component';
+import { FetchDataComponent } from './fetchdata/fetchdata.component';
+import { CounterComponent } from './counter/counter.component';
+import { VideoListComponent } from './video/video-list/video-list.component';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -23,6 +24,7 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'video-list', component: VideoListComponent},
             { path: '**', redirectTo: 'home' }
         ])
     ]
