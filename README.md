@@ -9,7 +9,7 @@ And so, the planned frameworks for now, assume:
 - Angular 4
 - ASP.NET Core
     - [JavaScript Services](https://github.com/aspnet/JavaScriptServices)
-- MongoDB (yea, could be something more spectacular, we'll think about it :) )
+- MongoDB
 
 A similar project for the previous year edition of the same competition was developed entirely using JavaScript frameworks (so NodeJS on the server side), but finally was not finished, due to lack of time and continuous problems with packages versions upgrades (sic!).
 
