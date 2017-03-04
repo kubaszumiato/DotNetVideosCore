@@ -18,8 +18,8 @@ import { VideosModule } from './videos/videos.module';
         HomeComponent
     ],
     imports: [
-        VideosModule,
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
+        VideosModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },

@@ -2,14 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '../common/common.module';
 import { RouterModule } from '@angular/router';
 
-@NgModule({
+import { UniversalModule } from 'angular2-universal';
+import {VideoListComponent} from './video-list/video-list.component';
 
-    imports: [CommonModule,
+@NgModule({
+declarations: [
+    VideoListComponent
+],
+    imports: [
+        UniversalModule,
+        CommonModule,
         RouterModule.forChild([
-            { path: 'video-list', component: VideosModule}
+            { path: 'video-list', component: VideoListComponent}
         ])
     ],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    entryComponents: [VideoListComponent]
 })
 export class VideosModule {
 }
