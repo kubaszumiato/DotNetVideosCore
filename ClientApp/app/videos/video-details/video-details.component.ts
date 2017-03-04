@@ -1,9 +1,9 @@
 import {Component, Injectable, Input, OnInit} from '@angular/core';
-import {FORM_DIRECTIVES, FormBuilder, ControlGroup, AbstractControl, Control, Validators} from '@angular/common';
-import {RouteParams} from '@angular/router';
+//import {FORM_DIRECTIVES, FormBuilder, ControlGroup, AbstractControl, Control, Validators} from '@angular/common';
+//import {RouteParams} from '@angular/router';
 import {EnumKeysPipe} from '../../pipes/enum.keys.pipe';
 import {VideoService, VideoValidationService} from '../video/video.services';
-import {IVideo, VideoDisplayMode, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces';
+//import {IVideo, VideoDisplayMode, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces';
 import {VideoWatchComponent} from '../video-watch/video-watch.component';
 
 @Component(

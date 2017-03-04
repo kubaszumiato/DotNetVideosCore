@@ -3,14 +3,14 @@ import {Component, Injectable, OnInit} from '@angular/core'; //View
 import {NgFor} from '@angular/common';
 import {Router} from '@angular/router';
 
-import {VideoService} from '../video.services';
-import {IVideo} from '../../../../shared/data-models/video.model.interfaces'
-import {VideoDetailsComponent} from './video-details.component';
+import {VideoService} from '../video/video.services';
+import {IVideo} from '../video/video.interfaces';
+import {VideoDetailsComponent} from '../video-details/video-details.component';
 @Component(
     {
         selector: 'video-list',
-        providers: [... HTTP_PROVIDERS, VideoService, VideoDetailsComponent],
-        directives: [VideoDetailsComponent],
+        //providers: [... HTTP_PROVIDERS, VideoService, VideoDetailsComponent],
+        //directives: [VideoDetailsComponent],
         template: require('./video-list.component.html')
     })
 //implements OnInit 
