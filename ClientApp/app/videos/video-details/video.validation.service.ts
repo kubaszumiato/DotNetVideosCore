@@ -1,6 +1,7 @@
-import {Injectable} from 'angular2/core';
-import {Control} from 'angular2/common';
-import {IVideo, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces'
+import {Injectable} from '@angular/core';
+//import {Control} from '@angular/common';
+import {IVideo} from './video-details.interfaces';
+import {VideoOriginEnum} from './video-details.enums';
 
 
 @Injectable()
@@ -31,33 +32,33 @@ export class VideoValidationService {
 
         return result;
     }
-    static ratingValidator(control: Control): { [s: string]: boolean } {
-        let ratingValue: number = control.value;
-        if (ratingValue < 0 || ratingValue > 5) {
-            return { ratingOutOfBounds: true };
-        }
-    }
+    // static ratingValidator(control: Control): { [s: string]: boolean } {
+    //     let ratingValue: number = control.value;
+    //     if (ratingValue < 0 || ratingValue > 5) {
+    //         return { ratingOutOfBounds: true };
+    //     }
+    // }
 
-    static urlValidator(control: Control): { [s: string]: boolean } {
-        let result: { [s: string]: boolean } = {};
+    // static urlValidator(control: Control): { [s: string]: boolean } {
+    //     let result: { [s: string]: boolean } = {};
 
-        //only recognized Urls are allowed
-        let url: string = control.value;
-        console.log('in urlValidator');
-        if (!url) {
-            console.log('no url provided');
-            result = { emptyUrl: true };
-        }
-        else {
-            let service = this;            
+    //     //only recognized Urls are allowed
+    //     let url: string = control.value;
+    //     console.log('in urlValidator');
+    //     if (!url) {
+    //         console.log('no url provided');
+    //         result = { emptyUrl: true };
+    //     }
+    //     else {
+    //         let service = this;            
 
-            if (VideoValidationService.recognizeVideoByUrl(url) == VideoOriginEnum.Unknown) {
-                console.log('unrecognized url format');
-                result = { invalidUrl: true };
-            }
-        }
-        return result;
-    }
+    //         if (VideoValidationService.recognizeVideoByUrl(url) == VideoOriginEnum.Unknown) {
+    //             console.log('unrecognized url format');
+    //             result = { invalidUrl: true };
+    //         }
+    //     }
+    //     return result;
+    // }
 
 
     //why this has to be static?

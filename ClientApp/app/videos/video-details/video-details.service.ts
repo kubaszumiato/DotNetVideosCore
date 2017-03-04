@@ -1,8 +1,9 @@
-import {Injectable} from 'angular2/core';
-import {Http, Response, Headers} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {Http, Response, Headers} from '@angular/http';
 import {VideoValidationService} from './video.validation.service';
 //import {Observable} from 'rxjs/Observable';
-import {IVideo, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces'
+import {IVideo} from './video-details.interfaces';
+import {VideoOriginEnum} from './video-details.enums';
 import {Observable} from 'rxjs/Rx';
 @Injectable()
 export class VideoService 
@@ -13,42 +14,42 @@ export class VideoService
     }
 
     //var source = Rx.Observable.from(array).flatMap(x => Rx.Observable.from(x).filter(z => z>1));
-    getVideos() : Observable<IVideo>
+    // getVideos() : Observable<IVideo>
     
-    {
-        return this.http.get('/api/video')
-            .map<IVideo[]>((res: Response)  => res.json())
-            .flatMap(vids =>  Observable.from(vids, _ => _)
-            // .map<IVideo>(v1 => {
-            //  //   v1.id = v1._id;
-            //     return v1;
-            // })
-            )
-           .filter(VideoValidationService.validateVideo)
-                 //{
-                                        //for(let video of vids)
-                  //  {
-                  //      video.id = video._id;
-                  //  }
-                 //   return vids;
-                //})
+    // {
+    //     return this.http.get('/api/video')
+    //         .map<IVideo[]>((res: Response)  => res.json())
+    //         .flatMap(vids =>  Observable.from(vids, _ => _)
+    //         // .map<IVideo>(v1 => {
+    //         //  //   v1.id = v1._id;
+    //         //     return v1;
+    //         // })
+    //         )
+    //        .filter(VideoValidationService.validateVideo)
+    //              //{
+    //                                     //for(let video of vids)
+    //               //  {
+    //               //      video.id = video._id;
+    //               //  }
+    //              //   return vids;
+    //             //})
                 
 
-            .do(res => console.log('All: ' + JSON.stringify(res)))
-            .catch(this.handleGetVideosError);
-        // .flatMapTo<IVideo>(vidArr => Observable.fromArray(vidArr)
-        // //Observable.map<IVideo>(t => Observable.fromArray(vidArr))
-        // .filter(vid => this.validateVideo(vid));
+    //         .do(res => console.log('All: ' + JSON.stringify(res)))
+    //         .catch(this.handleGetVideosError);
+    //     // .flatMapTo<IVideo>(vidArr => Observable.fromArray(vidArr)
+    //     // //Observable.map<IVideo>(t => Observable.fromArray(vidArr))
+    //     // .filter(vid => this.validateVideo(vid));
 
-        //     res.json()
-        //     .map(resJson => Observable.from(res)
-        //         .map(x => Observable
-        //             .from(x)
-        //             .filter<IVideo>(z => this.validateVideo(z))
-        //             .map<IVideo>(vid => vid.json));
+    //     //     res.json()
+    //     //     .map(resJson => Observable.from(res)
+    //     //         .map(x => Observable
+    //     //             .from(x)
+    //     //             .filter<IVideo>(z => this.validateVideo(z))
+    //     //             .map<IVideo>(vid => vid.json));
 
-        // });
-    }
+    //     // });
+    // }
     
     handleGetVideosError(error: Response)
     {
@@ -56,17 +57,17 @@ export class VideoService
         return Observable.throw(error || 'Server error occurred when retrieving list of videos');
     }
 
-    getVideo(id: string) : Observable<IVideo> 
-    {
-        return this.http.get('/api/video/' + id)
-            .map<IVideo>((res: Response) => res.json())
-            // .map(video => {
-            //     video.id = video._id;
-            //     return video;
-            // })
-             .do(res => console.log('Retrieved video: ' + JSON.stringify(res)))
-             .catch(this.handleGetVideoError);
-    }
+    // getVideo(id: string) : Observable<IVideo> 
+    // {
+    //     return this.http.get('/api/video/' + id)
+    //         .map<IVideo>((res: Response) => res.json())
+    //         // .map(video => {
+    //         //     video.id = video._id;
+    //         //     return video;
+    //         // })
+    //          .do(res => console.log('Retrieved video: ' + JSON.stringify(res)))
+    //          .catch(this.handleGetVideoError);
+    // }
     
     private handleGetVideoError(error: Response)
     {

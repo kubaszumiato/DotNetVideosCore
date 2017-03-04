@@ -3,9 +3,9 @@ import {Component, Injectable, OnInit} from '@angular/core'; //View
 import {NgFor} from '@angular/common';
 import {Router} from '@angular/router';
 
-import {VideoService} from '../video/video.services';
+//import {VideoService} from '../video/video.services';
 import {IVideo} from '../video/video.interfaces';
-import {VideoDetailsComponent} from '../video-details/video-details.component';
+//import {VideoDetailsComponent} from '../video-details/video-details.component';
 @Component(
     {
         selector: 'video-list',
@@ -21,14 +21,15 @@ export class VideoListComponent {
     
 
     constructor(
-        private _router: Router,
-        private _videoService: VideoService) { 
+        private _router: Router//,
+      //  private _videoService: VideoService
+        ) { 
             
-             this._videoService.getVideos()
-            .subscribe(
-            res => this.videos.push(res),
-            error => console.log(error)
-            );
+            // this._videoService.getVideos()
+            // .subscribe(
+            // res => this.videos.push(res),
+            // error => console.log(error)
+            // );
         }
 
     //from-code approach
