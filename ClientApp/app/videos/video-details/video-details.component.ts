@@ -1,4 +1,15 @@
-// import {Component, Injectable, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Routes} from '@angular/router';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+//temp
+interface Video {
+    createdDate: string;
+    category: string;
+    name: string;
+}
+
+//import {Component, Injectable, Input, OnInit} from '@angular/core';
 // //import {FORM_DIRECTIVES, FormBuilder, ControlGroup, AbstractControl, Control, Validators} from '@angular/common';
 // //import {RouteParams} from '@angular/router';
 // import {EnumKeysPipe} from '../../pipes/enum.keys.pipe';
@@ -6,24 +17,44 @@
 // //import {IVideo, VideoDisplayMode, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces';
 // import {VideoWatchComponent} from '../video-watch/video-watch.component';
 
-// @Component(
-//     {
+ @Component(
+     {
 //         directives: [VideoWatchComponent],
-//         selector: 'video-details',
+         selector: 'video-details',
 //         pipes: [EnumKeysPipe],
 //         providers: [VideoService, VideoValidationService],
-//         template: require('./video-details.component.html')
-//     })
+         template: require('./video-details.component.html')
+    })
 
 
-// export class VideoDetailsComponent {// implements OnInit {
+
+export class VideoDetailsComponent implements OnInit {
+     private id: any;
+     private video: Video;
+     constructor(private route: ActivatedRoute) {}
+     
+     ngOnInit(): void {     
+         this.route.params.map(params => params['id'])
+         .do(id => this.id = id)
+         .subscribe(id => this.GetVideo());
+     }
+
+     private GetVideo() {
+         this.video = {
+             createdDate : "12/12/2012",
+             category : "VLog",
+             name : "Lalamido"
+         }
+     }  
+
+}
 //     videoDetails: IVideo;
 //     videoForm: ControlGroup;
 //     //formBuilder: FormBuilder;
 //     videoOrigins = VideoOriginEnum;
 //     displayMode: string;
 
-//     //  ngOnInit(): void {     }  
+
 //     constructor(
 //         private fb: FormBuilder,
 //         private _params: RouteParams,

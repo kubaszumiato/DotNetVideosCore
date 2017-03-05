@@ -3,21 +3,25 @@ import { CommonModule } from '../common/common.module';
 import { RouterModule } from '@angular/router';
 
 import { UniversalModule } from 'angular2-universal';
-import {VideoListComponent} from './video-list/video-list.component';
+import { VideoListComponent } from './video-list/video-list.component';
+import { VideoDetailsComponent } from './video-details/video-details.component';
 
 @NgModule({
-declarations: [
-    VideoListComponent
-],
     imports: [
         UniversalModule,
         CommonModule,
         RouterModule.forChild([
-            { path: 'video-list', component: VideoListComponent}
+            { path: 'video-list', component: VideoListComponent},
+            { path: 'video-details', component: VideoDetailsComponent},
+            { path: 'video-details/:id', component: VideoDetailsComponent}
+
         ])
-    ],
-    exports: [RouterModule],
-    entryComponents: [VideoListComponent]
+    ]
+    ,
+declarations: [
+    VideoListComponent,
+    VideoDetailsComponent
+]//,     exports: [RouterModule]
 })
 export class VideosModule {
 }

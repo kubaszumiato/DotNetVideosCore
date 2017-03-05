@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9e24cd6edb223fdf72df"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "577992251753fd09a305"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -725,7 +725,7 @@ module.exports = vendor_c30e7002948fcf705279;
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(1))(332);
+module.exports = (__webpack_require__(1))(334);
 
 /***/ }),
 /* 3 */
@@ -983,10 +983,16 @@ module.exports = Html5Entities;
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(1))(334);
+module.exports = (__webpack_require__(1))(194);
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(1))(332);
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -994,8 +1000,8 @@ module.exports = (__webpack_require__(1))(334);
 Object.defineProperty(exports, "__esModule", { value: true });
 __webpack_require__(41);
 var core_1 = __webpack_require__(0);
-var angular2_universal_1 = __webpack_require__(5);
-var app_module_1 = __webpack_require__(11);
+var angular2_universal_1 = __webpack_require__(2);
+var app_module_1 = __webpack_require__(12);
 __webpack_require__(42);
 var rootElemTagName = 'app'; // Update this if you change your root component selector
 // Enable either Hot Module Reloading or production mode
@@ -1024,7 +1030,7 @@ else {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__resourceQuery, module) {/*eslint-env browser*/
@@ -1040,7 +1046,7 @@ var options = {
   name: ''
 };
 if (true) {
-  var querystring = __webpack_require__(34);
+  var querystring = __webpack_require__(35);
   var overrides = querystring.parse(__resourceQuery.slice(1));
   if (overrides.path) options.path = overrides.path;
   if (overrides.timeout) options.timeout = overrides.timeout;
@@ -1160,11 +1166,11 @@ if (typeof window !== 'undefined') {
 }
 
 function createReporter() {
-  var strip = __webpack_require__(35);
+  var strip = __webpack_require__(36);
 
   var overlay;
   if (typeof document !== 'undefined' && options.overlay) {
-    overlay = __webpack_require__(38);
+    overlay = __webpack_require__(39);
   }
 
   var styles = {
@@ -1217,7 +1223,7 @@ function createReporter() {
   };
 }
 
-var processUpdate = __webpack_require__(39);
+var processUpdate = __webpack_require__(40);
 
 var customHandler;
 var subscribeAllHandler;
@@ -1285,13 +1291,13 @@ if (module) {
 /* WEBPACK VAR INJECTION */}.call(exports, "?path=%2F__webpack_hmr", __webpack_require__(43)(module)))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(336);
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1474,7 +1480,7 @@ ansiHTML.reset()
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1485,7 +1491,7 @@ module.exports = function () {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1498,14 +1504,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var router_1 = __webpack_require__(2);
-var angular2_universal_1 = __webpack_require__(5);
-var app_component_1 = __webpack_require__(12);
-var navmenu_component_1 = __webpack_require__(17);
-var home_component_1 = __webpack_require__(16);
-var fetchdata_component_1 = __webpack_require__(15);
-var counter_component_1 = __webpack_require__(14);
-var videos_module_1 = __webpack_require__(20);
+var router_1 = __webpack_require__(6);
+var angular2_universal_1 = __webpack_require__(2);
+var app_component_1 = __webpack_require__(13);
+var navmenu_component_1 = __webpack_require__(18);
+var home_component_1 = __webpack_require__(17);
+var fetchdata_component_1 = __webpack_require__(16);
+var counter_component_1 = __webpack_require__(15);
+var videos_module_1 = __webpack_require__(21);
 var AppModule = (function () {
     function AppModule() {
     }
@@ -1538,7 +1544,7 @@ exports.AppModule = AppModule;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1559,15 +1565,15 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'app',
-        template: __webpack_require__(26),
-        styles: [__webpack_require__(36)]
+        template: __webpack_require__(27),
+        styles: [__webpack_require__(37)]
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1580,7 +1586,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var enum_keys_pipe_1 = __webpack_require__(18);
+var enum_keys_pipe_1 = __webpack_require__(19);
 var CommonModule = (function () {
     function CommonModule() {
     }
@@ -1596,7 +1602,7 @@ exports.CommonModule = CommonModule;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1621,14 +1627,14 @@ var CounterComponent = (function () {
 CounterComponent = __decorate([
     core_1.Component({
         selector: 'counter',
-        template: __webpack_require__(27)
+        template: __webpack_require__(28)
     })
 ], CounterComponent);
 exports.CounterComponent = CounterComponent;
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1644,7 +1650,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var http_1 = __webpack_require__(40);
+var http_1 = __webpack_require__(5);
 var FetchDataComponent = (function () {
     function FetchDataComponent(http) {
         var _this = this;
@@ -1657,7 +1663,7 @@ var FetchDataComponent = (function () {
 FetchDataComponent = __decorate([
     core_1.Component({
         selector: 'fetchdata',
-        template: __webpack_require__(28)
+        template: __webpack_require__(29)
     }),
     __metadata("design:paramtypes", [http_1.Http])
 ], FetchDataComponent);
@@ -1665,7 +1671,7 @@ exports.FetchDataComponent = FetchDataComponent;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1686,14 +1692,14 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     core_1.Component({
         selector: 'home',
-        template: __webpack_require__(29)
+        template: __webpack_require__(30)
     })
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1714,15 +1720,15 @@ var NavMenuComponent = (function () {
 NavMenuComponent = __decorate([
     core_1.Component({
         selector: 'nav-menu',
-        template: __webpack_require__(30),
-        styles: [__webpack_require__(37)]
+        template: __webpack_require__(31),
+        styles: [__webpack_require__(38)]
     })
 ], NavMenuComponent);
 exports.NavMenuComponent = NavMenuComponent;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1758,7 +1764,7 @@ exports.EnumKeysPipe = EnumKeysPipe;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1773,7 +1779,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var http_1 = __webpack_require__(40);
+var http_1 = __webpack_require__(5);
 //ng2
 var core_1 = __webpack_require__(0); //View
 //import {VideoDetailsComponent} from '../video-details/video-details.component';
@@ -1807,7 +1813,7 @@ VideoListComponent = __decorate([
         selector: 'video-list',
         //providers: [... HTTP_PROVIDERS, VideoService, VideoDetailsComponent],
         //directives: [VideoDetailsComponent],
-        template: __webpack_require__(31)
+        template: __webpack_require__(32)
     })
     //implements OnInit 
     ,
@@ -1817,7 +1823,7 @@ exports.VideoListComponent = VideoListComponent;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1830,10 +1836,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var common_module_1 = __webpack_require__(13);
-var router_1 = __webpack_require__(2);
-var angular2_universal_1 = __webpack_require__(5);
-var video_list_component_1 = __webpack_require__(19);
+var common_module_1 = __webpack_require__(14);
+var router_1 = __webpack_require__(6);
+var angular2_universal_1 = __webpack_require__(2);
+var video_list_component_1 = __webpack_require__(20);
+var video_details_component_1 = __webpack_require__(45);
 var VideosModule = (function () {
     function VideosModule() {
     }
@@ -1841,25 +1848,26 @@ var VideosModule = (function () {
 }());
 VideosModule = __decorate([
     core_1.NgModule({
-        declarations: [
-            video_list_component_1.VideoListComponent
-        ],
         imports: [
             angular2_universal_1.UniversalModule,
             common_module_1.CommonModule,
             router_1.RouterModule.forChild([
-                { path: 'video-list', component: video_list_component_1.VideoListComponent }
+                { path: 'video-list', component: video_list_component_1.VideoListComponent },
+                { path: 'video-details', component: video_details_component_1.VideoDetailsComponent },
+                { path: 'video-details/:id', component: video_details_component_1.VideoDetailsComponent }
             ])
         ],
-        exports: [router_1.RouterModule],
-        entryComponents: [video_list_component_1.VideoListComponent]
+        declarations: [
+            video_list_component_1.VideoListComponent,
+            video_details_component_1.VideoDetailsComponent
+        ] //,     exports: [RouterModule]
     })
 ], VideosModule);
 exports.VideosModule = VideosModule;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)();
@@ -1873,7 +1881,7 @@ exports.push([module.i, "@media (max-width: 767px) {\r\n    /* On small screens,
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)();
@@ -1887,19 +1895,19 @@ exports.push([module.i, "li .glyphicon {\r\n    margin-right: 10px;\r\n}\r\n\r\n
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = {
-  XmlEntities: __webpack_require__(25),
-  Html4Entities: __webpack_require__(24),
+  XmlEntities: __webpack_require__(26),
+  Html4Entities: __webpack_require__(25),
   Html5Entities: __webpack_require__(4),
   AllHtmlEntities: __webpack_require__(4)
 };
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 var HTML_ALPHA = ['apos', 'nbsp', 'iexcl', 'cent', 'pound', 'curren', 'yen', 'brvbar', 'sect', 'uml', 'copy', 'ordf', 'laquo', 'not', 'shy', 'reg', 'macr', 'deg', 'plusmn', 'sup2', 'sup3', 'acute', 'micro', 'para', 'middot', 'cedil', 'sup1', 'ordm', 'raquo', 'frac14', 'frac12', 'frac34', 'iquest', 'Agrave', 'Aacute', 'Acirc', 'Atilde', 'Auml', 'Aring', 'Aelig', 'Ccedil', 'Egrave', 'Eacute', 'Ecirc', 'Euml', 'Igrave', 'Iacute', 'Icirc', 'Iuml', 'ETH', 'Ntilde', 'Ograve', 'Oacute', 'Ocirc', 'Otilde', 'Ouml', 'times', 'Oslash', 'Ugrave', 'Uacute', 'Ucirc', 'Uuml', 'Yacute', 'THORN', 'szlig', 'agrave', 'aacute', 'acirc', 'atilde', 'auml', 'aring', 'aelig', 'ccedil', 'egrave', 'eacute', 'ecirc', 'euml', 'igrave', 'iacute', 'icirc', 'iuml', 'eth', 'ntilde', 'ograve', 'oacute', 'ocirc', 'otilde', 'ouml', 'divide', 'Oslash', 'ugrave', 'uacute', 'ucirc', 'uuml', 'yacute', 'thorn', 'yuml', 'quot', 'amp', 'lt', 'gt', 'oelig', 'oelig', 'scaron', 'scaron', 'yuml', 'circ', 'tilde', 'ensp', 'emsp', 'thinsp', 'zwnj', 'zwj', 'lrm', 'rlm', 'ndash', 'mdash', 'lsquo', 'rsquo', 'sbquo', 'ldquo', 'rdquo', 'bdquo', 'dagger', 'dagger', 'permil', 'lsaquo', 'rsaquo', 'euro', 'fnof', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'omicron', 'pi', 'rho', 'sigma', 'tau', 'upsilon', 'phi', 'chi', 'psi', 'omega', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'omicron', 'pi', 'rho', 'sigmaf', 'sigma', 'tau', 'upsilon', 'phi', 'chi', 'psi', 'omega', 'thetasym', 'upsih', 'piv', 'bull', 'hellip', 'prime', 'prime', 'oline', 'frasl', 'weierp', 'image', 'real', 'trade', 'alefsym', 'larr', 'uarr', 'rarr', 'darr', 'harr', 'crarr', 'larr', 'uarr', 'rarr', 'darr', 'harr', 'forall', 'part', 'exist', 'empty', 'nabla', 'isin', 'notin', 'ni', 'prod', 'sum', 'minus', 'lowast', 'radic', 'prop', 'infin', 'ang', 'and', 'or', 'cap', 'cup', 'int', 'there4', 'sim', 'cong', 'asymp', 'ne', 'equiv', 'le', 'ge', 'sub', 'sup', 'nsub', 'sube', 'supe', 'oplus', 'otimes', 'perp', 'sdot', 'lceil', 'rceil', 'lfloor', 'rfloor', 'lang', 'rang', 'loz', 'spades', 'clubs', 'hearts', 'diams'];
@@ -2052,7 +2060,7 @@ module.exports = Html4Entities;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 var ALPHA_INDEX = {
@@ -2213,43 +2221,43 @@ module.exports = XmlEntities;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class='container-fluid'>\r\n    <div class='row'>\r\n        <div class='col-sm-3'>\r\n            <nav-menu></nav-menu>\r\n        </div>\r\n        <div class='col-sm-9 body-content'>\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = "<h1>Counter</h1>\r\n\r\n<p>This is a simple example of an Angular 2 component.</p>\r\n\r\n<p>Current count: <strong>{{ currentCount }}</strong></p>\r\n\r\n<button (click)=\"incrementCounter()\">Increment</button>\r\n";
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = "<h1>Videos Sample</h1>\r\n\r\n<p>This component shows a simple fetching of Web API data.</p>\r\n\r\n<p *ngIf=\"!videos\"><em>Loading...</em></p>\r\n\r\n<table class='table' *ngIf=\"videos\">\r\n    <thead>\r\n        <tr>\r\n            <th>Created</th>\r\n            <th>Category</th>\r\n            <th>Name</th>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let video of videos\">\r\n            <td>{{ video.createdDate }}</td>\r\n            <td>{{ video.category }}</td>\r\n            <td>{{ video.name }}</td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n";
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = "<h1>Hello, world!</h1>\r\n<p>Welcome to your new single-page application, built with:</p>\r\n<ul>\r\n    <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>\r\n    <li><a href='https://angular.io/'>Angular 2</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>\r\n    <li><a href='https://webpack.github.io/'>Webpack</a> for building and bundling client-side resources</li>\r\n    <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>\r\n</ul>\r\n<p>To help you get started, we've also set up:</p>\r\n<ul>\r\n    <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>\r\n    <li><strong>Server-side prerendering</strong>. For faster initial loading and improved SEO, your Angular 2 app is prerendered on the server. The resulting HTML is then transferred to the browser where a client-side copy of the app takes over.</li>\r\n    <li><strong>Webpack dev middleware</strong>. In development mode, there's no need to run the <code>webpack</code> build tool. Your client-side resources are dynamically built on demand. Updates are available as soon as you modify any file.</li>\r\n    <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after making most changes. Within seconds of saving changes to files, your Angular 2 app will be rebuilt and a new instance injected is into the page.</li>\r\n    <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and the <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>\r\n</ul>\r\n";
 
 /***/ }),
-/* 30 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' [routerLink]=\"['/home']\">DotNetVideosCore</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/home']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Home\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <span class='glyphicon glyphicon-education'></span> Counter\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
-
-/***/ }),
 /* 31 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" *ngIf=\"videos\">\r\n<!--(click)=\"onVideoSelected(video)\"-->\r\n    <div class=\"row\">\r\n        <h1> Hello from video-list component </h1>\r\n        <!--<div class=\"col-sm-6 col-md-3\"  *ngFor=\" let video of videos \">\r\n            <div class=\"thumbnail\">\r\n                <img *ngIf=\"video.thumbUrl\" [src]=\"video.thumbUrl\" />\r\n                <div class=\"caption\">\r\n                    <h3>\r\n                        <a [routerLink] = \"['Video', {mode: 'watch', id: video._id}]\">\r\n                        {{video.title}}\r\n                        </a>\r\n                        </h3>\r\n                    <p>Length: {{video.length}}</p>\r\n                    <p>Watched: {{video.watchedCount}}</p>\r\n                    <p>Rating: {{video.rating}}</p>\r\n                    <p><a [href]=\"video.localUrl\" class=\"btn btn-primary\" role=\"button\">Watch</a> <a [href]=\"video.url\" class=\"btn btn-default\"\r\n                            role=\"button\">Watch</a></p>\r\n                </div>\r\n            </div>\r\n        </div>-->\r\n    </div>\r\n</div>";
+module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' [routerLink]=\"['/home']\">DotNetVideosCore</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/home']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Home\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <span class='glyphicon glyphicon-education'></span> Counter\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/video-list']\">\r\n                        <span class='glyphicon glyphicon-film'></span> Videos\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ }),
 /* 32 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\" *ngIf=\"videos\">\r\n    <!--(click)=\"onVideoSelected(video)\"-->\r\n    <div class=\"row\">\r\n        <h1> Hello from video-list component </h1>\r\n        <!--<div class=\"col-sm-6 col-md-3\" *ngFor=\" let video of videos \">\r\n            <div class=\"thumbnail\">\r\n                <p *ngIf=\"!videos\"><em>Loading...</em></p>-->\r\n\r\n                <table class='table'>\r\n                    <thead>\r\n                        <tr>\r\n                            <th>Created</th>\r\n                            <th>Category</th>\r\n                            <th>Name</th>\r\n                            <th>Edit</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr *ngFor=\"let video of videos\">\r\n                            <td>{{ video.createdDate }}</td>\r\n                            <td>{{ video.category }}</td>\r\n                            <td>{{ video.name }}</td>\r\n                            <td><a [routerLink]=\"['/video-details', video.name]\">Details </a></td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>\r\n\r\n                <!--<img *ngIf=\"video.thumbUrl\" [src]=\"video.thumbUrl\" />\r\n                <div class=\"caption\">\r\n                    <h3>\r\n                        <a [routerLink] = \"['Video', {mode: 'watch', id: video._id}]\">\r\n                        {{video.title}}\r\n                        </a>\r\n                        </h3>\r\n                    <p>Length: {{video.length}}</p>\r\n                    <p>Watched: {{video.watchedCount}}</p>\r\n                    <p>Rating: {{video.rating}}</p>\r\n                    <p><a [href]=\"video.localUrl\" class=\"btn btn-primary\" role=\"button\">Watch</a> <a [href]=\"video.url\" class=\"btn btn-default\"\r\n                            role=\"button\">Watch</a></p>\r\n                </div>-->\r\n            <!--</div>\r\n        </div>-->\r\n    </div>\r\n</div>";
+
+/***/ }),
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2340,7 +2348,7 @@ var isArray = Array.isArray || function (xs) {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2432,42 +2440,28 @@ var objectKeys = Object.keys || function (obj) {
 
 
 /***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.decode = exports.parse = __webpack_require__(32);
-exports.encode = exports.stringify = __webpack_require__(33);
-
-
-/***/ }),
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ansiRegex = __webpack_require__(10)();
 
-module.exports = function (str) {
-	return typeof str === 'string' ? str.replace(ansiRegex, '') : str;
-};
+exports.decode = exports.parse = __webpack_require__(33);
+exports.encode = exports.stringify = __webpack_require__(34);
 
 
 /***/ }),
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
 
-        var result = __webpack_require__(21);
+var ansiRegex = __webpack_require__(11)();
 
-        if (typeof result === "string") {
-            module.exports = result;
-        } else {
-            module.exports = result.toString();
-        }
-    
+module.exports = function (str) {
+	return typeof str === 'string' ? str.replace(ansiRegex, '') : str;
+};
+
 
 /***/ }),
 /* 37 */
@@ -2485,6 +2479,20 @@ module.exports = function (str) {
 
 /***/ }),
 /* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(23);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*eslint-env browser*/
@@ -2513,7 +2521,7 @@ for (var key in styles) {
   clientOverlay.style[key] = styles[key];
 }
 
-var ansiHTML = __webpack_require__(9);
+var ansiHTML = __webpack_require__(10);
 var colors = {
   reset: ['transparent', 'transparent'],
   black: '181818',
@@ -2528,7 +2536,7 @@ var colors = {
 };
 ansiHTML.setColors(colors);
 
-var Entities = __webpack_require__(23).AllHtmlEntities;
+var Entities = __webpack_require__(24).AllHtmlEntities;
 var entities = new Entities();
 
 exports.showProblems =
@@ -2569,7 +2577,7 @@ function problemType (type) {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -2707,12 +2715,6 @@ module.exports = function(hash, moduleMap, options) {
 
 
 /***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(1))(194);
-
-/***/ }),
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2734,10 +2736,310 @@ module.exports = (__webpack_require__(1))(573);
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(9);
 __webpack_require__(8);
-__webpack_require__(7);
-module.exports = __webpack_require__(6);
+module.exports = __webpack_require__(7);
 
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var router_1 = __webpack_require__(6);
+__webpack_require__(47);
+__webpack_require__(50);
+//import {Component, Injectable, Input, OnInit} from '@angular/core';
+// //import {FORM_DIRECTIVES, FormBuilder, ControlGroup, AbstractControl, Control, Validators} from '@angular/common';
+// //import {RouteParams} from '@angular/router';
+// import {EnumKeysPipe} from '../../pipes/enum.keys.pipe';
+// import {VideoService, VideoValidationService} from '../video/video.services';
+// //import {IVideo, VideoDisplayMode, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces';
+// import {VideoWatchComponent} from '../video-watch/video-watch.component';
+var VideoDetailsComponent = (function () {
+    function VideoDetailsComponent(route) {
+        this.route = route;
+    }
+    VideoDetailsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.map(function (params) { return params['id']; })
+            .do(function (id) { return _this.id = id; })
+            .subscribe(function (id) { return _this.GetVideo(); });
+    };
+    VideoDetailsComponent.prototype.GetVideo = function () {
+        this.video = {
+            createdDate: "12/12/2012",
+            category: "VLog",
+            name: "Lalamido"
+        };
+    };
+    return VideoDetailsComponent;
+}());
+VideoDetailsComponent = __decorate([
+    core_1.Component({
+        //         directives: [VideoWatchComponent],
+        selector: 'video-details',
+        //         pipes: [EnumKeysPipe],
+        //         providers: [VideoService, VideoValidationService],
+        template: __webpack_require__(46)
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute])
+], VideoDetailsComponent);
+exports.VideoDetailsComponent = VideoDetailsComponent;
+//     videoDetails: IVideo;
+//     videoForm: ControlGroup;
+//     //formBuilder: FormBuilder;
+//     videoOrigins = VideoOriginEnum;
+//     displayMode: string;
+//     constructor(
+//         private fb: FormBuilder,
+//         private _params: RouteParams,
+//         public videoService: VideoService,
+//         public validationService: VideoValidationService) {
+//         let id = this._params.get('id');
+//         let mode = this._params.get('mode');
+//         this.displayMode = mode;
+//         if (!mode || mode === '') {
+//             //no mode? heck?
+//             console.log('no mode selected');
+//         }
+//         else if (mode === 'watch' || mode === 'edit') {
+//             console.log('mode: ' + mode);
+//             this.getVideo(id);
+//         }
+//         else { //add
+//             console.log('new video');
+//             this.videoDetails = this.videoService.getEmptyVideo();
+//         }
+//         if (mode && mode !== 'watch'){
+//             console.log('prepare form (not watching)');
+//             this.videoForm = this.getVideoForm(fb);
+//         }
+//     }
+//     getVideo(id: string): void {
+//         if (id && id !== '') {
+//             this.videoService.getVideo(id).subscribe((res) => {
+//                 this.videoDetails = res;
+//                 console.log('got video: ' + res);
+//             });
+//         }
+//     }
+//     public saveVideo(value: any) {
+//         console.log('videoDetails on submit: ' + this.videoDetails);
+//         this.videoService.createVideo(this.videoDetails).subscribe(
+//             (res) => {
+//                 this.videoDetails = res;
+//                 console.log('successfully saved video with ID: ' + this.videoDetails.id)
+//             },
+//             (error) => console.log('error on saving video'));
+//     }
+//     //where to put this?
+//     getVideoForm(fb: FormBuilder): ControlGroup {
+//         //that would be our form we need to build
+//         let result: ControlGroup = fb.group({
+//             //control for the movie title, required value
+//             'title': ['', Validators.required],
+//             //control for rating. Specific validator
+//             'rating': ['', VideoValidationService.ratingValidator],
+//             //video origin/source (YouTube, Vimeo, Channel9)
+//             'videoOrigin': [''],
+//             //url of the video, required value
+//             'url': ['', VideoValidationService.urlValidator]
+//         });
+//         result.controls['title'].valueChanges.subscribe(
+//             (value: string) => console.log('title changed to: ' + value)
+//         )
+//         result.controls['url'].valueChanges.subscribe(
+//             (value: string) => {
+//                 var origin = VideoValidationService.recognizeVideoByUrl(value);
+//                 this.videoDetails.videoOrigin = origin;
+//             });
+//         result.valueChanges.subscribe(
+//             (value: ControlGroup) => {
+//                 console.log('form changed to: ' + value.value);
+//             });
+//         return result;
+//     }
+// } 
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">    \r\n    Id: {{id}} <br />\r\n    Created: {{video.createdDate}} <br />\r\n    Category: {{video.category }} <br />\r\n    Name: {{video.name}}\r\n\r\n    <hr />\r\n    <!--<div *ngIf=\"displayMode === 'watch'\">\r\n        <video-watch [video]=\"videoDetails\">\r\n        </video-watch>\r\n    </div>\r\n    <div *ngIf=\"displayMode !== 'watch'\">\r\n        <form [ngFormModel]=\"videoForm\" id=\"video-details-add\" *ngIf=\"videoDetails\" (ngSubmit)=\"saveVideo(videoForm.value)\">\r\n            <fieldset class=\"form-group\">\r\n                <label for=\"videoDetailsTitle\">Title: </label>\r\n                <input type=\"text\" class=\"form-control\" placeholder=\"Title\" [(ngModel)]=\"videoDetails.title\" ngControl=\"title\" id=\"videoDetailsTitle\"\r\n                />\r\n                <span *ngIf=\"!videoForm.controls.title?.valid\">\r\n                The title is required!\r\n            </span>\r\n            </fieldset>\r\n            <fieldset class=\"form-group\">\r\n                <label>Rating: </label>\r\n                <input class=\"form-control\" placeholder=\"rating\" [(ngModel)]=\"videoDetails.rating\" ngControl=\"rating\" />\r\n                <span *ngIf=\"!videoForm.controls.rating?.valid\">\r\n                The rating must be between 0 and 5!\r\n            </span>\r\n            </fieldset>\r\n            <fieldset class=\"form-group\">\r\n                <label>url: </label>\r\n                <input class=\"form-control\" placeholder=\"url\" [(ngModel)]=\"videoDetails.url\" ngControl=\"url\" />\r\n                <ul *ngIf=\"!videoForm.controls.url?.valid\">\r\n                    The URL is invalid. Possible issues:<br />\r\n                    <li *ngIf=\"videoForm.controls.url?.emptyUrl\">\r\n                        The URL cannot be empty\r\n                    </li>\r\n                    <li *ngIf=\"videoForm.controls.url?.invalidUrl\">\r\n                        The URL format was not recognized by the system.\r\n                    </li>\r\n                </ul>\r\n            </fieldset>\r\n            <fieldset>\r\n                <label for=\"VideoOrigin\">Source:</label>\r\n                <select class=\"form-control\" [(ngModel)]=\"videoDetails.videoOrigin\" ngControl=\"videoOrigin\">\r\n                <option *ngFor=\"let origin of videoOrigins | keys\" [value]=\"origin.key\">{{origin.value}}</option>\r\n            </select>\r\n            </fieldset>\r\n\r\n            <button type=\"submit\" class=\"ui button\">Submit</button>\r\n        </form>\r\n    </div>-->\r\n</div>";
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__(49);
+var map_1 = __webpack_require__(48);
+Observable_1.Observable.prototype.map = map_1.map;
+//# sourceMappingURL=map.js.map
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(1))(121);
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(1))(13);
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__(49);
+var do_1 = __webpack_require__(51);
+Observable_1.Observable.prototype.do = do_1._do;
+Observable_1.Observable.prototype._do = do_1._do;
+//# sourceMappingURL=do.js.map
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var Subscriber_1 = __webpack_require__(52);
+/* tslint:enable:max-line-length */
+/**
+ * Perform a side effect for every emission on the source Observable, but return
+ * an Observable that is identical to the source.
+ *
+ * <span class="informal">Intercepts each emission on the source and runs a
+ * function, but returns an output which is identical to the source.</span>
+ *
+ * <img src="./img/do.png" width="100%">
+ *
+ * Returns a mirrored Observable of the source Observable, but modified so that
+ * the provided Observer is called to perform a side effect for every value,
+ * error, and completion emitted by the source. Any errors that are thrown in
+ * the aforementioned Observer or handlers are safely sent down the error path
+ * of the output Observable.
+ *
+ * This operator is useful for debugging your Observables for the correct values
+ * or performing other side effects.
+ *
+ * Note: this is different to a `subscribe` on the Observable. If the Observable
+ * returned by `do` is not subscribed, the side effects specified by the
+ * Observer will never happen. `do` therefore simply spies on existing
+ * execution, it does not trigger an execution to happen like `subscribe` does.
+ *
+ * @example <caption>Map every every click to the clientX position of that click, while also logging the click event</caption>
+ * var clicks = Rx.Observable.fromEvent(document, 'click');
+ * var positions = clicks
+ *   .do(ev => console.log(ev))
+ *   .map(ev => ev.clientX);
+ * positions.subscribe(x => console.log(x));
+ *
+ * @see {@link map}
+ * @see {@link subscribe}
+ *
+ * @param {Observer|function} [nextOrObserver] A normal Observer object or a
+ * callback for `next`.
+ * @param {function} [error] Callback for errors in the source.
+ * @param {function} [complete] Callback for the completion of the source.
+ * @return {Observable} An Observable identical to the source, but runs the
+ * specified Observer or callback(s) for each item.
+ * @method do
+ * @name do
+ * @owner Observable
+ */
+function _do(nextOrObserver, error, complete) {
+    return this.lift(new DoOperator(nextOrObserver, error, complete));
+}
+exports._do = _do;
+var DoOperator = (function () {
+    function DoOperator(nextOrObserver, error, complete) {
+        this.nextOrObserver = nextOrObserver;
+        this.error = error;
+        this.complete = complete;
+    }
+    DoOperator.prototype.call = function (subscriber, source) {
+        return source.subscribe(new DoSubscriber(subscriber, this.nextOrObserver, this.error, this.complete));
+    };
+    return DoOperator;
+}());
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @ignore
+ * @extends {Ignored}
+ */
+var DoSubscriber = (function (_super) {
+    __extends(DoSubscriber, _super);
+    function DoSubscriber(destination, nextOrObserver, error, complete) {
+        _super.call(this, destination);
+        var safeSubscriber = new Subscriber_1.Subscriber(nextOrObserver, error, complete);
+        safeSubscriber.syncErrorThrowable = true;
+        this.add(safeSubscriber);
+        this.safeSubscriber = safeSubscriber;
+    }
+    DoSubscriber.prototype._next = function (value) {
+        var safeSubscriber = this.safeSubscriber;
+        safeSubscriber.next(value);
+        if (safeSubscriber.syncErrorThrown) {
+            this.destination.error(safeSubscriber.syncErrorValue);
+        }
+        else {
+            this.destination.next(value);
+        }
+    };
+    DoSubscriber.prototype._error = function (err) {
+        var safeSubscriber = this.safeSubscriber;
+        safeSubscriber.error(err);
+        if (safeSubscriber.syncErrorThrown) {
+            this.destination.error(safeSubscriber.syncErrorValue);
+        }
+        else {
+            this.destination.error(err);
+        }
+    };
+    DoSubscriber.prototype._complete = function () {
+        var safeSubscriber = this.safeSubscriber;
+        safeSubscriber.complete();
+        if (safeSubscriber.syncErrorThrown) {
+            this.destination.error(safeSubscriber.syncErrorValue);
+        }
+        else {
+            this.destination.complete();
+        }
+    };
+    return DoSubscriber;
+}(Subscriber_1.Subscriber));
+//# sourceMappingURL=do.js.map
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(1))(20);
 
 /***/ })
 /******/ ]);

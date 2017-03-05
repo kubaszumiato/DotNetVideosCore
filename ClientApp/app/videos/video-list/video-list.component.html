@@ -1,10 +1,31 @@
 <div class="container" *ngIf="videos">
-<!--(click)="onVideoSelected(video)"-->
+    <!--(click)="onVideoSelected(video)"-->
     <div class="row">
         <h1> Hello from video-list component </h1>
-        <!--<div class="col-sm-6 col-md-3"  *ngFor=" let video of videos ">
+        <!--<div class="col-sm-6 col-md-3" *ngFor=" let video of videos ">
             <div class="thumbnail">
-                <img *ngIf="video.thumbUrl" [src]="video.thumbUrl" />
+                <p *ngIf="!videos"><em>Loading...</em></p>-->
+
+                <table class='table'>
+                    <thead>
+                        <tr>
+                            <th>Created</th>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let video of videos">
+                            <td>{{ video.createdDate }}</td>
+                            <td>{{ video.category }}</td>
+                            <td>{{ video.name }}</td>
+                            <td><a [routerLink]="['/video-details', video.name]">Details </a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!--<img *ngIf="video.thumbUrl" [src]="video.thumbUrl" />
                 <div class="caption">
                     <h3>
                         <a [routerLink] = "['Video', {mode: 'watch', id: video._id}]">
@@ -16,8 +37,8 @@
                     <p>Rating: {{video.rating}}</p>
                     <p><a [href]="video.localUrl" class="btn btn-primary" role="button">Watch</a> <a [href]="video.url" class="btn btn-default"
                             role="button">Watch</a></p>
-                </div>
-            </div>
+                </div>-->
+            <!--</div>
         </div>-->
     </div>
 </div>

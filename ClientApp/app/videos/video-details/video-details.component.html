@@ -1,5 +1,11 @@
 <div class="container">    
-    <div *ngIf="displayMode === 'watch'">
+    Id: {{id}} <br />
+    Created: {{video.createdDate}} <br />
+    Category: {{video.category }} <br />
+    Name: {{video.name}}
+
+    <hr />
+    <!--<div *ngIf="displayMode === 'watch'">
         <video-watch [video]="videoDetails">
         </video-watch>
     </div>
@@ -42,5 +48,5 @@
 
             <button type="submit" class="ui button">Submit</button>
         </form>
-    </div>
+    </div>-->
 </div>
