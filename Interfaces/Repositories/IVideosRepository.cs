@@ -1,18 +1,19 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DotNetVideosCore.Models;
 
 namespace DotNetVideosCore.Interfaces.Repositories
 {
     public interface IVideosRepository
     {
-        Video InsertVideo(Video video);
+         Task<Video> InsertVideo(Video video);
         List<Video> SelectAll();
 
         List<Video> Filter(string query);
 
-        Video Get(string id);
+        Task<Video> Get(string id);
 
-        Video UpdateVideo(string id, Video video);
+        Task<Video> UpdateVideo(string id, Video video);
 
     }
 }

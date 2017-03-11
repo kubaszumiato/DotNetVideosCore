@@ -11,7 +11,7 @@ using DotNetVideosCore.Interfaces.Repositories;
 
 namespace DotNetVideosCore.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/videos")]
     public class VideosController : Controller
     {
         private readonly IMapper _mapper;
@@ -28,10 +28,41 @@ namespace DotNetVideosCore.Controllers
         };
 
         [HttpGet("[action]")]
-        public IEnumerable<VideoDto> VideosSample()
+        public IActionResult VideosSample()
         {
             List<DotNetVideosCore.Models.Video> videosList = this._repository.SelectAll();
-            return videosList.Select(v => _mapper.Map<VideoDto>(v));
+            var result = videosList.Select(v => _mapper.Map<VideoDto>(v));
+            return Ok( result );
         }
+        [HttpGet("{id}")]
+        public IActionResult GetVideo(int id)
+        {
+            VideoDto video = null;
+
+            if (video == null)
+            {
+                //returns HTTP 404
+                return NotFound();
+            }
+            //returns HTTP 200
+            return Ok(video);
+        }
+
+        [HttpPost("{video}")]
+        public async Task<IActionResult> PostVideo(VideoDto video)
+        {
+            if (video == null)
+            {
+                video = new VideoDto
+                {
+                    Title = "lalamido " + DateTime.UtcNow.ToString(),
+                    Url = "http://eventuallyNoUrl",
+                    Code = "code"
+                }; 
+            }
+            Models.Video videoModel = _mapper.Map<DotNetVideosCore.Models.Video>(video);
+            return Ok(await this._repository.InsertVideo(videoModel));
+        }
+        
     }
 }

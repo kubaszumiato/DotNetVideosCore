@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '../common/common.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule} from '@angular/forms';
 
 import { UniversalModule } from 'angular2-universal';
 import { VideoListComponent } from './video-list/video-list.component';
@@ -11,7 +12,8 @@ import { VideosRoutingModule } from './videos-routing.module';
     imports: [
         UniversalModule,
         CommonModule,
-        VideosRoutingModule
+        VideosRoutingModule,
+        FormsModule
     ]
     ,
 declarations: [

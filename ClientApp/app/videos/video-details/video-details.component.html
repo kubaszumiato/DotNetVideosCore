@@ -1,8 +1,18 @@
-<div class="container">    
-    Id: {{id}} <br />
-    Created: {{video.createdDate}} <br />
-    Category: {{video.category }} <br />
-    Name: {{video.name}}
+<h3>Video Details</h3>
+
+<form #form="ngForm" novalidate>
+    <div class="form-group">
+        <label>Title:</label>
+        <input type="text" class="form-control" required placeholder="Name" name="title" ngModel>
+    </div>
+    <button class="btn btn-primary" type="submit">Ok</button>
+</form>
+
+{{ form.pristine }}
+
+
+<div class="container">
+    Id: {{id}} <br /> Created: {{video.createdDate}} <br /> Category: {{video.category }} <br /> Name: {{video.name}}
 
     <hr />
     <!--<div *ngIf="displayMode === 'watch'">

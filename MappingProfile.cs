@@ -9,6 +9,9 @@ namespace DotNetVideosCore
         public MappingProfile()
         {
             CreateMap<Video, VideoDto>();
+               // .IgnoreAllPropertiesWithAnInaccessibleSetter()
+               // .IgnoreAllSourcePropertiesWithAnInaccessibleSetter();
+
             CreateMap<VideoDto, Video>();
         }
     }

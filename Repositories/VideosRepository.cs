@@ -1,10 +1,10 @@
 using DotNetVideosCore.Models;
 using DotNetVideosCore.Interfaces.Repositories;
 using System.Collections.Generic;
-using System;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization;
+using System.Threading.Tasks;
 
 namespace DotNetVideosCore.Repositories
 {
@@ -24,19 +24,24 @@ namespace DotNetVideosCore.Repositories
         }
 
 
-        public List<Video> Filter(string query)
+        public List<Video> Filter(string jsonQuery)
         {
-            throw new NotImplementedException();
+            var queryDoc = new BsonDocument(BsonSerializer.Deserialize<BsonDocument>(jsonQuery));
+            return _collection.Find<Video>(queryDoc).ToList();
         }
 
-        public Video Get(string id)
+        public async Task<Video> Get(string id)
         {
-            throw new NotImplementedException();
+             return await this._collection
+                .Find(
+                 new BsonDocument { { "Id", new ObjectId(id) } })
+                .FirstAsync();
         }
 
-        public Video InsertVideo(Video video)
+        public async Task<Video> InsertVideo(Video video)
         {
-            throw new NotImplementedException();
+            await this._collection.InsertOneAsync(video);
+            return await this.Get(video.Id.ToString());
         }
 
         public List<Video> SelectAll()
@@ -45,9 +50,13 @@ namespace DotNetVideosCore.Repositories
             return query.Result;
         }
 
-        public Video UpdateVideo(string id, Video video)
+        public async Task<Video> UpdateVideo(string id, Video video)
         {
-            throw new NotImplementedException();
+            video.Id = id;
+
+            var filter = Builders<Video>.Filter.Eq(s => s.Id, video.Id);
+            await this._collection.ReplaceOneAsync(filter, video);
+            return await this.Get(id);
         }
     }
 }

@@ -2,11 +2,13 @@
     <!--(click)="onVideoSelected(video)"-->
     <div class="row">
         <h1> Hello from video-list component </h1>
+        <a [routerLink] = "['/video-details/', 0]">Add
+                        </a>
         <!--<div class="col-sm-6 col-md-3" *ngFor=" let video of videos ">
             <div class="thumbnail">
                 <p *ngIf="!videos"><em>Loading...</em></p>-->
 
-                <table class='table'>
+                <!--<table class='table'>
                     <thead>
                         <tr>
                             <th>Created</th>
@@ -23,7 +25,8 @@
                             <td><a [routerLink]="['/video-details', video.name]">Details </a></td>
                         </tr>
                     </tbody>
-                </table>
+                </table>-->
+
 
                 <!--<img *ngIf="video.thumbUrl" [src]="video.thumbUrl" />
                 <div class="caption">
