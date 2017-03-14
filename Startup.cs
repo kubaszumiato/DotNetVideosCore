@@ -32,7 +32,11 @@ namespace DotNetVideosCore
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc()
+                .AddJsonOptions(jsonOptions =>
+                {
+                    jsonOptions.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                });
 
             //var config = new AutoMapper.MapperConfiguration( cfg =>
             //{
@@ -41,6 +45,13 @@ namespace DotNetVideosCore
             //});
             //var mapper = config.CreateMapper();
             services.AddAutoMapper();
+
+            services.Configure<Settings>(options =>
+            {
+                options.ConnectionString = Configuration.GetSection("DatabaseDetails:ConnectionString").Value;
+                options.Database = Configuration.GetSection("DatabaseDetails:Database").Value;
+            });
+            
 
             services.AddTransient<IVideosRepository, VideosRepository>();
         }

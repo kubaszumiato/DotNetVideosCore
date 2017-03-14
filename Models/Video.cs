@@ -1,14 +1,13 @@
 using System;
 using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
 using System.Collections.Generic;
+using MongoDB.Bson;
 
 namespace DotNetVideosCore.Models
 {
     public class Video
     {
-
-       [BsonId]
+        [BsonId]
         public string Id { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }

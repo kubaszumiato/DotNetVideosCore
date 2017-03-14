@@ -8,6 +8,7 @@ using AutoMapper;
 
 
 using DotNetVideosCore.Interfaces.Repositories;
+using DotNetVideosCore.Models;
 
 namespace DotNetVideosCore.Controllers
 {
@@ -30,35 +31,56 @@ namespace DotNetVideosCore.Controllers
         [HttpGet("[action]")]
         public IActionResult VideosSample()
         {
-            List<DotNetVideosCore.Models.Video> videosList = this._repository.SelectAll();
+            List<Video> videosList = //this._repository.SelectAll();
+                new List<Video>()
+                {
+                    new Video()
+                    {
+                        Category = VideoCategoryEnum.Training,
+                        Code = "Text Video1",
+                        LocalUrl = "http://abc.pl",
+                        Url = "http://def.pl",
+                        Rating = 2,
+                        UploadedDate = DateTime.UtcNow,
+                        CreatedDate = DateTime.UtcNow.Subtract(TimeSpan.FromMinutes(40)),
+                        Title = "Text Video1 Title",
+                        MediaType = "abc",
+                        VideoLength = 2344,
+                        VideoOriginEnum = VideoOriginEnum.YouTube,
+                        WatchedCount = 0,
+                        Name = "Text Video 1",
+                        Tags = new List<string> () {"abc", "def", "ghi"}
+                    }
+                };
             var result = videosList.Select(v => _mapper.Map<VideoDto>(v));
             return Ok( result );
         }
         [HttpGet("{id}")]
-        public IActionResult GetVideo(int id)
+        public async Task<IActionResult> GetVideo(string id)
         {
-            VideoDto video = null;
+            Video result;
+            var video = await _repository.Get(id.ToString());
 
             if (video == null)
             {
                 //returns HTTP 404
                 return NotFound();
             }
+
+            result = _mapper.Map<Video>(video);
+
             //returns HTTP 200
-            return Ok(video);
+            return Ok(result);
         }
 
+        
+
         [HttpPost("{video}")]
-        public async Task<IActionResult> PostVideo(VideoDto video)
+        public async Task<IActionResult> PostVideo([FromBody] VideoDto video)
         {
             if (video == null)
             {
-                video = new VideoDto
-                {
-                    Title = "lalamido " + DateTime.UtcNow.ToString(),
-                    Url = "http://eventuallyNoUrl",
-                    Code = "code"
-                }; 
+                return BadRequest("Object cannot be null");
             }
             Models.Video videoModel = _mapper.Map<DotNetVideosCore.Models.Video>(video);
             return Ok(await this._repository.InsertVideo(videoModel));
