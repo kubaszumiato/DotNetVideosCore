@@ -23,38 +23,7 @@ namespace DotNetVideosCore.Controllers
             _mapper = mapper;
             _repository = repository;
         }
-        private static string[] Categories = new[]
-                {
-            "Tutorial", "VLog", "Conference"
-        };
 
-        [HttpGet("[action]")]
-        public IActionResult VideosSample()
-        {
-            List<Video> videosList = //this._repository.SelectAll();
-                new List<Video>()
-                {
-                    new Video()
-                    {
-                        Category = VideoCategoryEnum.Training,
-                        Code = "Text Video1",
-                        LocalUrl = "http://abc.pl",
-                        Url = "http://def.pl",
-                        Rating = 2,
-                        UploadedDate = DateTime.UtcNow,
-                        CreatedDate = DateTime.UtcNow.Subtract(TimeSpan.FromMinutes(40)),
-                        Title = "Text Video1 Title",
-                        MediaType = "abc",
-                        VideoLength = 2344,
-                        VideoOriginEnum = VideoOriginEnum.YouTube,
-                        WatchedCount = 0,
-                        Name = "Text Video 1",
-                        Tags = new List<string> () {"abc", "def", "ghi"}
-                    }
-                };
-            var result = videosList.Select(v => _mapper.Map<VideoDto>(v));
-            return Ok( result );
-        }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVideo(string id)
         {
@@ -63,16 +32,13 @@ namespace DotNetVideosCore.Controllers
 
             if (video == null)
             {
-                //returns HTTP 404
                 return NotFound();
             }
 
             result = _mapper.Map<Video>(video);
-
-            //returns HTTP 200
+            
             return Ok(result);
         }
-
         
 
         [HttpPost("{video}")]
@@ -80,9 +46,9 @@ namespace DotNetVideosCore.Controllers
         {
             if (video == null)
             {
-                return BadRequest("Object cannot be null");
+                return BadRequest("Could not deserialize Video object");
             }
-            Models.Video videoModel = _mapper.Map<DotNetVideosCore.Models.Video>(video);
+            Video videoModel = _mapper.Map<Video>(video);
             return Ok(await this._repository.InsertVideo(videoModel));
         }
         
