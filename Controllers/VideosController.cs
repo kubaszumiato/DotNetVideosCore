@@ -25,6 +25,11 @@ namespace DotNetVideosCore.Controllers
             var result = await _repository.SelectAll();
             return Ok(result);
         }
+        [HttpGet("empty")]
+        public ActionResult Empty()
+        {
+            return Ok(new VideoDto());
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVideo(string id)

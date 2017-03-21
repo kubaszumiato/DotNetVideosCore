@@ -16,8 +16,22 @@ export class VideoService implements IVideoService
 
     GetVideos() : Observable<IVideo>
     {
-        return this.http.get('/api/videos')
+        return this.http.get(this.videoApiUrl)
         .map((res: Response)  => res.json());
+    }
+
+    GetVideo(id: string) : Observable<IVideo> 
+    {
+        if (id == "0")
+        {
+            return this.http.get(this.videoApiUrl + "/Empty")
+            .map((res:Response) => res.json())            
+            .do(res => console.log('Retrieved video: ' + JSON.stringify(res)));
+        }
+        return this.http.get(this.videoApiUrl + "/" + id)
+            .map((res: Response) => res.json())
+            .do(res => console.log('Retrieved video: ' + JSON.stringify(res)));
+            // .catch(this.handleGetVideoError);
     }
 
 

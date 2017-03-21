@@ -1,19 +1,25 @@
 <h3>Video Details</h3>
-
-<form #form="ngForm" novalidate>
+<div *ngIf="video">
+<form #form="ngForm" novalidate ng-model>
     <div class="form-group">
         <label>Title:</label>
-        <input type="text" class="form-control" required placeholder="Name" name="title" ngModel>
+        <input type="text" class="form-control" required placeholder="Name" name="video.title | async" ngModel>
     </div>
+    <fieldset class="form-group">
+        <label for="videoDetailsTitle">Title: </label>
+        <input type="text" class="form-control" [(ngModel)]="video.title" placeholder="Title" ngModel name="title" id="videoDetailsTitle" />        
+    </fieldset>
     <button class="btn btn-primary" type="submit">Ok</button>
 </form>
 
-{{ form.pristine }}
 
 
+
+    <p> {{video.Title}} </p>
+
+</div>
 <div class="container">
-    Id: {{id}} <br /> Created: {{video.createdDate}} <br /> Category: {{video.category }} <br /> Name: {{video.name}}
-
+    
     <hr />
     <!--<div *ngIf="displayMode === 'watch'">
         <video-watch [video]="videoDetails">
@@ -21,14 +27,7 @@
     </div>
     <div *ngIf="displayMode !== 'watch'">
         <form [ngFormModel]="videoForm" id="video-details-add" *ngIf="videoDetails" (ngSubmit)="saveVideo(videoForm.value)">
-            <fieldset class="form-group">
-                <label for="videoDetailsTitle">Title: </label>
-                <input type="text" class="form-control" placeholder="Title" [(ngModel)]="videoDetails.title" ngControl="title" id="videoDetailsTitle"
-                />
-                <span *ngIf="!videoForm.controls.title?.valid">
-                The title is required!
-            </span>
-            </fieldset>
+            
             <fieldset class="form-group">
                 <label>Rating: </label>
                 <input class="form-control" placeholder="rating" [(ngModel)]="videoDetails.rating" ngControl="rating" />

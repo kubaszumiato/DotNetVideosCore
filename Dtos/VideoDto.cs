@@ -7,7 +7,7 @@ namespace DotNetVideosCore.Dtos
     public class VideoDto
     {
         public string Id { get; set; }
-        public string Title { get; set; }
+        public string Title { get; set; } 
         public string Url { get; set; }
         public string LocalUrl { get; set; }
         public string Code { get; set; }

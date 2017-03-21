@@ -1,13 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Routes} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Routes, Params } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
-//temp
-interface Video {
-    createdDate: string;
-    category: string;
-    name: string;
-}
+
 
 //import {Component, Injectable, Input, OnInit} from '@angular/core';
 // //import {FORM_DIRECTIVES, FormBuilder, ControlGroup, AbstractControl, Control, Validators} from '@angular/common';
@@ -16,36 +11,39 @@ interface Video {
 // import {VideoService, VideoValidationService} from '../video/video.services';
 // //import {IVideo, VideoDisplayMode, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces';
 // import {VideoWatchComponent} from '../video-watch/video-watch.component';
-
- @Component(
-     {
-//         directives: [VideoWatchComponent],
-         selector: 'video-details',
-//         pipes: [EnumKeysPipe],
-//         providers: [VideoService, VideoValidationService],
-         template: require('./video-details.component.html')
+import { IVideo } from '../video/video.interfaces';
+import { VideoService } from '../video/video.services';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import { Observable } from "rxjs/Observable";
+@Component(
+    {
+        //         directives: [VideoWatchComponent],
+        selector: 'video-details',
+        //         pipes: [EnumKeysPipe],
+        //         providers: [VideoService, VideoValidationService],
+        template: require('./video-details.component.html')
     })
 
 
 
 export class VideoDetailsComponent implements OnInit {
-     private id: any;
-     private video: Video;
-     constructor(private route: ActivatedRoute) {}
-     
-     ngOnInit(): void {     
-         this.route.params.map(params => params['id'])
-         .do(id => this.id = id)
-         .subscribe(id => this.GetVideo());
+    private id: any;
+    private video: IVideo;
+    constructor(private route: ActivatedRoute, private videoService: VideoService) {
+
+        console.log('in da constructor');
      }
 
-     private GetVideo() {
-         this.video = {
-             createdDate : "12/12/2012",
-             category : "VLog",
-             name : "Lalamido"
-         }
-     }  
+    ngOnInit() {
+        this.route.params
+      // (+) converts string 'id' to a number
+      .switchMap((params: Params) => this.videoService.GetVideo(params['id']))
+      .subscribe((video: IVideo) => this.video = video);
+    }
+
+
+
 
 }
 //     videoDetails: IVideo;
@@ -63,7 +61,7 @@ export class VideoDetailsComponent implements OnInit {
 //         let id = this._params.get('id');
 //         let mode = this._params.get('mode');
 //         this.displayMode = mode;
-        
+
 //         if (!mode || mode === '') {
 //             //no mode? heck?
 //             console.log('no mode selected');
@@ -76,12 +74,12 @@ export class VideoDetailsComponent implements OnInit {
 //             console.log('new video');
 //             this.videoDetails = this.videoService.getEmptyVideo();
 //         }
-        
+
 //         if (mode && mode !== 'watch'){
 //             console.log('prepare form (not watching)');
 //             this.videoForm = this.getVideoForm(fb);
 //         }
-        
+
 //     }
 
 //     getVideo(id: string): void {
