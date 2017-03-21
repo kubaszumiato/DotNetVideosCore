@@ -32,7 +32,7 @@ export class VideoListComponent {
     public videos: Video[];
 
     constructor(http: Http) {
-        http.get('/api/Videos/VideosSample').subscribe(result => {
+        http.get('/api/Videos/').subscribe(result => {
             this.videos = result.json() as Video[];
         });
     }

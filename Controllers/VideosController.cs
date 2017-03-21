@@ -24,20 +24,24 @@ namespace DotNetVideosCore.Controllers
             _repository = repository;
         }
 
+        [HttpGet()]
+        public async Task<IActionResult> Videos()
+        {
+            var result = await _repository.SelectAll();
+            return Ok(result);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetVideo(string id)
         {
-            Video result;
             var video = await _repository.Get(id.ToString());
 
             if (video == null)
             {
                 return NotFound();
             }
-
-            result = _mapper.Map<Video>(video);
             
-            return Ok(result);
+            return Ok(_mapper.Map<Video>(video));
         }
         
 
@@ -46,10 +50,33 @@ namespace DotNetVideosCore.Controllers
         {
             if (video == null)
             {
-                return BadRequest("Could not deserialize Video object");
+                return BadRequest("Could not deserialize the Video object");
             }
             Video videoModel = _mapper.Map<Video>(video);
-            return Ok(await this._repository.InsertVideo(videoModel));
+            VideoDto result = _mapper.Map<VideoDto>(await _repository.InsertVideo(videoModel));
+            return CreatedAtAction("PostVideo", result);
+        }
+
+        [HttpPut("{video}")]
+        public async Task<IActionResult> EditVideo([FromBody] VideoDto video)
+        {
+            if (video == null)
+            {
+                return BadRequest("Could not deserialize the Video object");
+            }
+
+            return Ok(await _repository.UpdateVideo(video.Id, _mapper.Map<Video>(video)));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> RemoveVideo(string id)
+        {
+            if (!await _repository.CheckIfExists(id))
+            {
+                return NotFound(id);
+            }
+            await _repository.DeleteVideo(id);
+            return NoContent();
         }
         
     }

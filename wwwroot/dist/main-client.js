@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "298dc9c5e7d95b363fc3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e5fd080478b1a2185181"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8083,7 +8083,7 @@ var core_1 = __webpack_require__(0); //View
 var VideoListComponent = (function () {
     function VideoListComponent(http) {
         var _this = this;
-        http.get('/api/Videos/VideosSample').subscribe(function (result) {
+        http.get('/api/Videos/').subscribe(function (result) {
             _this.videos = result.json();
         });
     }
