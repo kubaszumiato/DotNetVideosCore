@@ -20,7 +20,5 @@ namespace DotNetVideosCore.Dtos
         public DateTime CreatedDate { get; set; }
         public DateTime UploadedDate { get; set; }
         public VideoCategoryEnum Category { get; set; }
-        public string Name { get; set; }
-
     }
 }

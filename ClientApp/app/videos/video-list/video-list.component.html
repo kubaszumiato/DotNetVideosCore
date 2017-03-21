@@ -1,7 +1,14 @@
 <div class="container" *ngIf="videos">
     <!--(click)="onVideoSelected(video)"-->
+    
+    <h1> Hello from video-list component </h1>
+    <ul>
+      <li *ngFor="let video of videos | async">
+        {{video.id}}
+      </li>
+    </ul>
+
     <div class="row">
-        <h1> Hello from video-list component </h1>
         <a [routerLink] = "['/video-details/', 0]">Add
                         </a>
         <!--<div class="col-sm-6 col-md-3" *ngFor=" let video of videos ">

@@ -5,13 +5,22 @@ import {VideoValidationService} from './video.validation.service';
 import {IVideo} from './video-details.interfaces';
 import {VideoOriginEnum} from './video-details.enums';
 import {Observable} from 'rxjs/Rx';
+
 @Injectable()
-export class VideoService 
+export class VideoService implements IVideoService
 {
-    private videoApiUrl : string = '/api/video';
+    private videoApiUrl : string = '/api/videos';
     constructor(public http: Http) 
     {
     }
+
+    GetVideos() : Observable<IVideo>
+    {
+        return this.http.get('/api/videos')
+        .map((res: Response)  => res.json());
+    }
+
+
 
     //var source = Rx.Observable.from(array).flatMap(x => Rx.Observable.from(x).filter(z => z>1));
     // getVideos() : Observable<IVideo>
@@ -51,11 +60,11 @@ export class VideoService
     //     // });
     // }
     
-    handleGetVideosError(error: Response)
-    {
-        console.error (error);
-        return Observable.throw(error || 'Server error occurred when retrieving list of videos');
-    }
+    // handleGetVideosError(error: Response)
+    // {
+    //     console.error (error);
+    //     return Observable.throw(error || 'Server error occurred when retrieving list of videos');
+    // }
 
     // getVideo(id: string) : Observable<IVideo> 
     // {
@@ -69,46 +78,46 @@ export class VideoService
     //          .catch(this.handleGetVideoError);
     // }
     
-    private handleGetVideoError(error: Response)
-    {
-        console.error(error);
-        return Observable.throw(error.json() || 'Server error occurred when retrieving video details');
+    // private handleGetVideoError(error: Response)
+    // {
+    //     console.error(error);
+    //     return Observable.throw(error.json() || 'Server error occurred when retrieving video details');
 
-    }
+    // }
 
-    getEmptyVideo() {
-        var result: IVideo = {
-           // _id: '',
-            id: '',
-            title: '',
-            url: '',
-            localUrl: '',
-            code: '',
-            mediaType: '',
-            videoLength: 0,
-            videoOrigin: VideoOriginEnum.YouTube,
-            tags: [],
-            rating: 0,
-            watchedCount: 0
-        }
+    // getEmptyVideo() {
+    //     var result: IVideo = {
+    //        // _id: '',
+    //         id: '',
+    //         title: '',
+    //         url: '',
+    //         localUrl: '',
+    //         code: '',
+    //         mediaType: '',
+    //         videoLength: 0,
+    //         videoOrigin: VideoOriginEnum.YouTube,
+    //         tags: [],
+    //         rating: 0,
+    //         watchedCount: 0
+    //     }
 
-        return result;
-    }
+    //     return result;
+    // }
 
-    createVideo(data: IVideo) : Observable<IVideo> {
-        if (!VideoValidationService.validateVideo(data))
-            return;
+    // createVideo(data: IVideo) : Observable<IVideo> {
+    //     if (!VideoValidationService.validateVideo(data))
+    //         return;
 
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
+    //     let headers = new Headers();
+    //     headers.append('Content-Type', 'application/json');
         
-        var jsoned = JSON.stringify(data);
-        console.log('service, create video.Video json: ' + jsoned);
+    //     var jsoned = JSON.stringify(data);
+    //     console.log('service, create video.Video json: ' + jsoned);
 
-        return this.http.post('/api/video', JSON.stringify(data),
-            { headers: headers })
-            .map(res => res.json());
-    }
+    //     return this.http.post('/api/video', JSON.stringify(data),
+    //         { headers: headers })
+    //         .map(res => res.json());
+    // }
 
     // validateVideo(entity: IVideo): boolean {
     //     let result: boolean = true;
@@ -161,3 +170,9 @@ export class VideoService
     //     return VideoOriginEnum.Unknown;        
     // }
 }
+
+interface IVideoService
+{
+    GetVideos() : Observable<IVideo>;
+}
+

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e5fd080478b1a2185181"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "158edbbc4a8573d0a4f0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8079,14 +8079,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = __webpack_require__(41);
 //ng2
 var core_1 = __webpack_require__(0); //View
+var video_services_1 = __webpack_require__(101);
 //import {VideoDetailsComponent} from '../video-details/video-details.component';
 var VideoListComponent = (function () {
-    function VideoListComponent(http) {
-        var _this = this;
-        http.get('/api/Videos/').subscribe(function (result) {
-            _this.videos = result.json();
-        });
+    function VideoListComponent(http, videoService) {
+        this.http = http;
+        this.videoService = videoService;
     }
+    VideoListComponent.prototype.ngOnInit = function () {
+        this.videos = this.videoService.GetVideos();
+    };
     // constructor(
     //     private _router: Router//,
     //   //  private _videoService: VideoService
@@ -8111,10 +8113,8 @@ VideoListComponent = __decorate([
         //providers: [... HTTP_PROVIDERS, VideoService, VideoDetailsComponent],
         //directives: [VideoDetailsComponent],
         template: __webpack_require__(76)
-    })
-    //implements OnInit 
-    ,
-    __metadata("design:paramtypes", [http_1.Http])
+    }),
+    __metadata("design:paramtypes", [http_1.Http, video_services_1.VideoService])
 ], VideoListComponent);
 exports.VideoListComponent = VideoListComponent;
 
@@ -9666,6 +9666,7 @@ var angular2_universal_1 = __webpack_require__(30);
 var video_list_component_1 = __webpack_require__(38);
 var video_details_component_1 = __webpack_require__(37);
 var videos_routing_module_1 = __webpack_require__(63);
+var video_services_1 = __webpack_require__(101);
 var VideosModule = (function () {
     function VideosModule() {
     }
@@ -9682,7 +9683,9 @@ VideosModule = __decorate([
         declarations: [
             video_list_component_1.VideoListComponent,
             video_details_component_1.VideoDetailsComponent
-        ] //,     exports: [RouterModule]
+        ],
+        providers: [video_services_1.VideoService]
+        //,     exports: [RouterModule],
     })
 ], VideosModule);
 exports.VideosModule = VideosModule;
@@ -10082,7 +10085,7 @@ module.exports = "<h3>Video Details</h3>\r\n\r\n<form #form=\"ngForm\" novalidat
 /* 76 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" *ngIf=\"videos\">\r\n    <!--(click)=\"onVideoSelected(video)\"-->\r\n    <div class=\"row\">\r\n        <h1> Hello from video-list component </h1>\r\n        <a [routerLink] = \"['/video-details/', 0]\">Add\r\n                        </a>\r\n        <!--<div class=\"col-sm-6 col-md-3\" *ngFor=\" let video of videos \">\r\n            <div class=\"thumbnail\">\r\n                <p *ngIf=\"!videos\"><em>Loading...</em></p>-->\r\n\r\n                <!--<table class='table'>\r\n                    <thead>\r\n                        <tr>\r\n                            <th>Created</th>\r\n                            <th>Category</th>\r\n                            <th>Name</th>\r\n                            <th>Edit</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr *ngFor=\"let video of videos\">\r\n                            <td>{{ video.createdDate }}</td>\r\n                            <td>{{ video.category }}</td>\r\n                            <td>{{ video.name }}</td>\r\n                            <td><a [routerLink]=\"['/video-details', video.name]\">Details </a></td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>-->\r\n\r\n\r\n                <!--<img *ngIf=\"video.thumbUrl\" [src]=\"video.thumbUrl\" />\r\n                <div class=\"caption\">\r\n                    <h3>\r\n                        <a [routerLink] = \"['Video', {mode: 'watch', id: video._id}]\">\r\n                        {{video.title}}\r\n                        </a>\r\n                        </h3>\r\n                    <p>Length: {{video.length}}</p>\r\n                    <p>Watched: {{video.watchedCount}}</p>\r\n                    <p>Rating: {{video.rating}}</p>\r\n                    <p><a [href]=\"video.localUrl\" class=\"btn btn-primary\" role=\"button\">Watch</a> <a [href]=\"video.url\" class=\"btn btn-default\"\r\n                            role=\"button\">Watch</a></p>\r\n                </div>-->\r\n            <!--</div>\r\n        </div>-->\r\n    </div>\r\n</div>";
+module.exports = "<div class=\"container\" *ngIf=\"videos\">\r\n    <!--(click)=\"onVideoSelected(video)\"-->\r\n    \r\n    <h1> Hello from video-list component </h1>\r\n    <ul>\r\n      <li *ngFor=\"let video of videos | async\">\r\n        {{video.id}}\r\n      </li>\r\n    </ul>\r\n\r\n    <div class=\"row\">\r\n        <a [routerLink] = \"['/video-details/', 0]\">Add\r\n                        </a>\r\n        <!--<div class=\"col-sm-6 col-md-3\" *ngFor=\" let video of videos \">\r\n            <div class=\"thumbnail\">\r\n                <p *ngIf=\"!videos\"><em>Loading...</em></p>-->\r\n\r\n                <!--<table class='table'>\r\n                    <thead>\r\n                        <tr>\r\n                            <th>Created</th>\r\n                            <th>Category</th>\r\n                            <th>Name</th>\r\n                            <th>Edit</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr *ngFor=\"let video of videos\">\r\n                            <td>{{ video.createdDate }}</td>\r\n                            <td>{{ video.category }}</td>\r\n                            <td>{{ video.name }}</td>\r\n                            <td><a [routerLink]=\"['/video-details', video.name]\">Details </a></td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>-->\r\n\r\n\r\n                <!--<img *ngIf=\"video.thumbUrl\" [src]=\"video.thumbUrl\" />\r\n                <div class=\"caption\">\r\n                    <h3>\r\n                        <a [routerLink] = \"['Video', {mode: 'watch', id: video._id}]\">\r\n                        {{video.title}}\r\n                        </a>\r\n                        </h3>\r\n                    <p>Length: {{video.length}}</p>\r\n                    <p>Watched: {{video.watchedCount}}</p>\r\n                    <p>Rating: {{video.rating}}</p>\r\n                    <p><a [href]=\"video.localUrl\" class=\"btn btn-primary\" role=\"button\">Watch</a> <a [href]=\"video.url\" class=\"btn btn-default\"\r\n                            role=\"button\">Watch</a></p>\r\n                </div>-->\r\n            <!--</div>\r\n        </div>-->\r\n    </div>\r\n</div>";
 
 /***/ }),
 /* 77 */
@@ -10817,6 +10820,174 @@ module.exports = (__webpack_require__(1))(573);
 __webpack_require__(45);
 __webpack_require__(44);
 module.exports = __webpack_require__(43);
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var VideoOriginEnum;
+(function (VideoOriginEnum) {
+    VideoOriginEnum[VideoOriginEnum["Unknown"] = 0] = "Unknown";
+    VideoOriginEnum[VideoOriginEnum["YouTube"] = 1] = "YouTube";
+    VideoOriginEnum[VideoOriginEnum["Vimeo"] = 2] = "Vimeo";
+    VideoOriginEnum[VideoOriginEnum["Channel9"] = 3] = "Channel9";
+})(VideoOriginEnum || (VideoOriginEnum = {}));
+exports.VideoOriginEnum = VideoOriginEnum;
+var VideoDisplayMode;
+(function (VideoDisplayMode) {
+    VideoDisplayMode[VideoDisplayMode["Create"] = 0] = "Create";
+    VideoDisplayMode[VideoDisplayMode["Read"] = 1] = "Read";
+    VideoDisplayMode[VideoDisplayMode["CompactRead"] = 2] = "CompactRead";
+    VideoDisplayMode[VideoDisplayMode["Edit"] = 3] = "Edit";
+})(VideoDisplayMode || (VideoDisplayMode = {}));
+exports.VideoDisplayMode = VideoDisplayMode;
+
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var http_1 = __webpack_require__(41);
+var VideoService = (function () {
+    function VideoService(http) {
+        this.http = http;
+        this.videoApiUrl = '/api/videos';
+    }
+    VideoService.prototype.GetVideos = function () {
+        return this.http.get('/api/videos')
+            .map(function (res) { return res.json(); });
+    };
+    return VideoService;
+}());
+VideoService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], VideoService);
+exports.VideoService = VideoService;
+
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var video_details_enums_1 = __webpack_require__(98);
+var VideoValidationService = (function () {
+    function VideoValidationService() {
+    }
+    VideoValidationService.validateVideo = function (entity) {
+        var result = true;
+        // if (!entity.id) {
+        //     console.log('validation: id is empty for video: ' + entity);
+        //     result = false;
+        //}
+        // if (!entity.title) {
+        //     console.log('validation: title is empty for video: ' + entity);
+        //     result = false;
+        // }
+        // if (VideoValidationService.recognizeVideoByUrl(entity.url) == VideoOriginEnum.Unknown) {
+        //     console.log('validation: url of the video is incorrect: ' + entity.url);
+        //     result = false;
+        // }
+        // //rating must be an integer between 0 and 5
+        // if (!entity || entity.rating < 0 || entity.rating > 5) {
+        //     result = false;
+        //     console.log('validation: wrong rating for video: ' + entity);
+        // }
+        return result;
+    };
+    // static ratingValidator(control: Control): { [s: string]: boolean } {
+    //     let ratingValue: number = control.value;
+    //     if (ratingValue < 0 || ratingValue > 5) {
+    //         return { ratingOutOfBounds: true };
+    //     }
+    // }
+    // static urlValidator(control: Control): { [s: string]: boolean } {
+    //     let result: { [s: string]: boolean } = {};
+    //     //only recognized Urls are allowed
+    //     let url: string = control.value;
+    //     console.log('in urlValidator');
+    //     if (!url) {
+    //         console.log('no url provided');
+    //         result = { emptyUrl: true };
+    //     }
+    //     else {
+    //         let service = this;            
+    //         if (VideoValidationService.recognizeVideoByUrl(url) == VideoOriginEnum.Unknown) {
+    //             console.log('unrecognized url format');
+    //             result = { invalidUrl: true };
+    //         }
+    //     }
+    //     return result;
+    // }
+    //why this has to be static?
+    VideoValidationService.recognizeVideoByUrl = function (url) {
+        //http://stackoverflow.com/questions/5830387/how-to-find-all-youtube-video-ids-in-a-string-using-a-regex/5831191#5831191
+        var ytUrlRegExp = /(https?:\/\/)?(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/ig;
+        //http://stackoverflow.com/questions/13286785/get-video-id-from-vimeo-url
+        var vmUrlRegExp = /(https?:\/\/)?(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
+        //#todo
+        //let ch9UrlRegExp: RegExp = /http?/;
+        if (url && url.match(ytUrlRegExp)) {
+            console.log('youtube url matched');
+            return video_details_enums_1.VideoOriginEnum.YouTube;
+        }
+        if (url && url.match(vmUrlRegExp)) {
+            console.log('vimeo url matched');
+            return video_details_enums_1.VideoOriginEnum.Vimeo;
+        }
+        // if (url.match(ch9UrlRegExp)) {
+        //     console.log('channel9 url matched');            
+        //     return VideoOrigin.Channel9;
+        // }
+        return video_details_enums_1.VideoOriginEnum.Unknown;
+    };
+    return VideoValidationService;
+}());
+VideoValidationService = __decorate([
+    core_1.Injectable()
+], VideoValidationService);
+exports.VideoValidationService = VideoValidationService;
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(99));
+__export(__webpack_require__(100));
 
 
 /***/ })

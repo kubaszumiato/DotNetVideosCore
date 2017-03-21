@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DotNetVideosCore.Dtos;
 using AutoMapper;
-
-
 using DotNetVideosCore.Interfaces.Repositories;
 using DotNetVideosCore.Models;
 

@@ -7,6 +7,7 @@ import { UniversalModule } from 'angular2-universal';
 import { VideoListComponent } from './video-list/video-list.component';
 import { VideoDetailsComponent } from './video-details/video-details.component';
 import { VideosRoutingModule } from './videos-routing.module';
+import { VideoService } from './video/video.services';
 
 @NgModule({
     imports: [
@@ -19,7 +20,9 @@ import { VideosRoutingModule } from './videos-routing.module';
 declarations: [
     VideoListComponent,
     VideoDetailsComponent
-]//,     exports: [RouterModule]
+],
+providers: [VideoService]
+//,     exports: [RouterModule],
 })
 export class VideosModule {
 }

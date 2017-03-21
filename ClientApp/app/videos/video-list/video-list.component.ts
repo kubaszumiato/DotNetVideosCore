@@ -14,8 +14,9 @@ import {Component, Injectable, OnInit} from '@angular/core'; //View
 import {NgFor} from '@angular/common';
 import {Router} from '@angular/router';
 
-//import {VideoService} from '../video/video.services';
-import {IVideo} from '../video/video.interfaces';
+import {VideoService} from '../video/video.services';
+import { IVideo } from '../video/video.interfaces';
+import { Observable } from "rxjs/Observable";
 //import {VideoDetailsComponent} from '../video-details/video-details.component';
 @Component(
     {
@@ -24,17 +25,16 @@ import {IVideo} from '../video/video.interfaces';
         //directives: [VideoDetailsComponent],
         templateUrl: './video-list.component.html'
     })
-//implements OnInit 
-export class VideoListComponent {
-    // ngOnInit(): void { }
+
+export class VideoListComponent implements OnInit {
+    ngOnInit(): void { 
+        this.videos = this.videoService.GetVideos();
+    }
     //public videos: Array<IVideo> = [];
     public selectedVideo: IVideo;
-    public videos: Video[];
+    public videos: Observable<IVideo>;
 
-    constructor(http: Http) {
-        http.get('/api/Videos/').subscribe(result => {
-            this.videos = result.json() as Video[];
-        });
+    constructor(private http: Http, private videoService: VideoService) {
     }
 
     // constructor(

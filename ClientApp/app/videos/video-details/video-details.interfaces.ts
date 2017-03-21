@@ -32,4 +32,9 @@ export interface IVideo {
   //owner?: User;
   //we'd also like to know the watch count
   watchedCount:  number;
+  createdDate : string;
+  uploadedDate : string;
+  category : number;
+
+
 };

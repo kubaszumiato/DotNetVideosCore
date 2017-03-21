@@ -14,21 +14,21 @@ export class VideoValidationService {
         //     console.log('validation: id is empty for video: ' + entity);
         //     result = false;
         //}
-        if (!entity.title) {
+        // if (!entity.title) {
 
-            console.log('validation: title is empty for video: ' + entity);
-            result = false;
-        }
-        if (VideoValidationService.recognizeVideoByUrl(entity.url) == VideoOriginEnum.Unknown) {
-            console.log('validation: url of the video is incorrect: ' + entity.url);
-            result = false;
-        }
+        //     console.log('validation: title is empty for video: ' + entity);
+        //     result = false;
+        // }
+        // if (VideoValidationService.recognizeVideoByUrl(entity.url) == VideoOriginEnum.Unknown) {
+        //     console.log('validation: url of the video is incorrect: ' + entity.url);
+        //     result = false;
+        // }
 
-        //rating must be an integer between 0 and 5
-        if (!entity || entity.rating < 0 || entity.rating > 5) {
-            result = false;
-            console.log('validation: wrong rating for video: ' + entity);
-        }
+        // //rating must be an integer between 0 and 5
+        // if (!entity || entity.rating < 0 || entity.rating > 5) {
+        //     result = false;
+        //     console.log('validation: wrong rating for video: ' + entity);
+        // }
 
         return result;
     }
