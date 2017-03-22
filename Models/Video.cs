@@ -15,7 +15,7 @@ namespace DotNetVideosCore.Models
         //public string Code { get; set; }
         //public string MediaType { get; set; }
         //public int VideoLength { get; set; }
-        public VideoOriginEnum VideoOriginEnum { get; set; }
+        public VideoOriginEnum VideoOrigin { get; set; }
         //public List<string> Tags { get; set; }
         public int Rating { get; set; }
         //public int WatchedCount { get; set; }

@@ -2,16 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Routes, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/catch';
 
 import { IVideo } from '../video/video.interfaces';
 import { VideoService } from '../video/video.services';
 
 import { VideoOriginEnum } from './video-details.enums';
-import {EnumKeysPipe} from '../../pipes/enum.keys.pipe';
+import { EnumKeysPipe } from '../../pipes/enum.keys.pipe';
+import { SafePipe } from '../../pipes/safe.html.pipe';
 
 
 //import {Component, Injectable, Input, OnInit} from '@angular/core';
@@ -19,56 +24,106 @@ import {EnumKeysPipe} from '../../pipes/enum.keys.pipe';
 // //import {RouteParams} from '@angular/router';
 // import {VideoValidationService} from '../video/video.services';
 // //import {IVideo, VideoDisplayMode, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces';
-// import {VideoWatchComponent} from '../video-watch/video-watch.component';
+
 @Component(
     {
-        //         directives: [VideoWatchComponent],
         selector: 'video-details',
-       // pipes: [EnumKeysPipe],
-        //         providers: [VideoService, VideoValidationService],
         template: require('./video-details.component.html')
     })
 export class VideoDetailsComponent implements OnInit {
     private id: any;
     private video: IVideo;
     private videoOrigins = VideoOriginEnum;
-    constructor(private route: ActivatedRoute, private videoService: VideoService) { }
+    private videoUrl = new Subject<string>();
+    private preview: oEmbed;
+    constructor(private route: ActivatedRoute, private videoService: VideoService) {
+    }
+
+    verifyVideo(form: NgForm) {
+        console.log('verifyVideo: ' + form.value);
+
+    }
+
+    validateVideoUrl(event: any) {
+        this.videoUrl.next(event);
+    }
 
     ngOnInit() {
         this.route.params
-      // (+) converts string 'id' to a number
-      .switchMap((params: Params) => this.videoService.GetVideo(params['id']))
-      .subscribe((video: IVideo) => this.video = video);
+            .switchMap((params: Params) => this.videoService.GetVideo(params['id']))
+            .subscribe((video: IVideo) => {
+                this.video = video;
+                this.previewVideo(video.url);
+            });
+        this.videoUrl
+            .debounceTime(1000)
+            .distinctUntilChanged()
+            .subscribe(url => this.previewVideo(url));
+
+    }
+
+    previewVideo(url){
+        this.video.url = url;
+        this.videoService.checkVideoOEmbed(url)
+        
+        .subscribe(res => {
+            this.preview = res;
+            console.log(this.preview);
+        });
     }
 
     onSubmit(form: NgForm) {
         console.log('model: ' + this.video);
-        console.log('form: ' + form.value );
+        console.log('form: ' + form.value);
         if (this.video.id != null && this.video.id != "0") {
             this.videoService.updateVideo(this.video).subscribe(
-            (res) => {
-                this.video = res;
-                console.log('successfully saved video with ID: ' + this.video.id)
-            },
-            (error) => console.log('error on saving video'));
+                (res) => {
+                    this.video = res;
+                    console.log('successfully saved video with ID: ' + this.video.id)
+                },
+                (error) => console.log('error on saving video'));
         } else {
             this.videoService.createVideo(this.video).subscribe(
-            (res) => {
-                this.video = res;
-                console.log('successfully saved video with ID: ' + this.video.id)
-            },
-            (error) => console.log('error on saving video'));
+                (res) => {
+                    this.video = res;
+                    console.log('successfully saved video with ID: ' + this.video.id)
+                },
+                (error) => console.log('error on saving video'));
         }
 
 
 
-        
+
     }
 
 
 
 
 
+
+}
+
+export class oEmbed{
+    type: any;
+version: any;
+provider_name: any;
+provider_url: any;
+title: any;
+author_name: any;
+author_url: any;
+is_plus: any;
+html: any;
+width: any;
+height: any;
+duration: any;
+description: any;
+thumbnail_url: any;
+thumbnail_width: any;
+thumbnail_height: any;
+thumbnail_url_with_play_button: any;
+upload_date: any;
+video_id: any;
+uri: any;
 
 }
 //     videoForm: ControlGroup;

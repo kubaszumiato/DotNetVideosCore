@@ -7,9 +7,8 @@
     </fieldset>
     <fieldset class="form-group">
         <label for="videoUrl">Url:</label>
-        <input type="text" class="form-control" [(ngModel)]="video.url" name="video.url" placeholder="Url" id="videoUrl" />
-    </fieldset>
-    
+        <input type="text" class="form-control" [ngModel]="video.url" (ngModelChange)="validateVideoUrl($event)" name="video.url" placeholder="Url" id="videoUrl" />
+    </fieldset>    
     <fieldset class="form-group">
         <label for="videoOrigin">Origin:</label>
        <select class="form-control" [(ngModel)]="video.videoOrigin" name="video.videoOrigin">
@@ -17,17 +16,12 @@
             </select>
     </fieldset>
     <button class="btn btn-primary" type="submit">Ok</button>
-    {{form.value | json}}
+    {{ form.value | json}}
+    {{ video | json }}
 </form>
-
-
-
-
-    <p> {{video.Title}} </p>
-
 </div>
-<div class="container">
-    
+<div class="container" [innerHtml]="preview?.html | safe: 'html'">
+
     <hr />
     <!--<div *ngIf="displayMode === 'watch'">
         <video-watch [video]="videoDetails">

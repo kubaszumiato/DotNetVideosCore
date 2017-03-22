@@ -12,7 +12,7 @@ namespace DotNetVideosCore.Dtos
         //public string LocalUrl { get; set; }
         //public string Code { get; set; }
         //public int VideoLength { get; set; }
-        public VideoOriginEnum VideoOriginEnum { get; set; }
+        public VideoOriginEnum VideoOrigin { get; set; }
         //public List<string> Tags { get; set; }
         public int Rating { get; set; }
        // public int WatchedCount { get; set; }
