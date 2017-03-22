@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DotNetVideosCore.Dtos;
 using DotNetVideosCore.Models;
+using MongoDB.Bson;
 
 namespace DotNetVideosCore
 {
@@ -13,6 +14,8 @@ namespace DotNetVideosCore
                // .IgnoreAllSourcePropertiesWithAnInaccessibleSetter();
 
             CreateMap<VideoDto, Video>();
+            // CreateMap<ObjectId, string>().ConvertUsing(o => o.ToString());
+            // CreateMap<string, ObjectId>().ConvertUsing(s => ObjectId.Parse(s));
         }
     }
 

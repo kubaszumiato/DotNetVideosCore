@@ -1,39 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Routes, Params } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
+import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/switchMap';
+
+import { IVideo } from '../video/video.interfaces';
+import { VideoService } from '../video/video.services';
+
+import { VideoOriginEnum } from './video-details.enums';
+import {EnumKeysPipe} from '../../pipes/enum.keys.pipe';
 
 
 //import {Component, Injectable, Input, OnInit} from '@angular/core';
 // //import {FORM_DIRECTIVES, FormBuilder, ControlGroup, AbstractControl, Control, Validators} from '@angular/common';
 // //import {RouteParams} from '@angular/router';
-// import {EnumKeysPipe} from '../../pipes/enum.keys.pipe';
-// import {VideoService, VideoValidationService} from '../video/video.services';
+// import {VideoValidationService} from '../video/video.services';
 // //import {IVideo, VideoDisplayMode, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces';
 // import {VideoWatchComponent} from '../video-watch/video-watch.component';
-import { IVideo } from '../video/video.interfaces';
-import { VideoService } from '../video/video.services';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
-import { Observable } from "rxjs/Observable";
 @Component(
     {
         //         directives: [VideoWatchComponent],
         selector: 'video-details',
-        //         pipes: [EnumKeysPipe],
+       // pipes: [EnumKeysPipe],
         //         providers: [VideoService, VideoValidationService],
         template: require('./video-details.component.html')
     })
-
-
-
 export class VideoDetailsComponent implements OnInit {
     private id: any;
     private video: IVideo;
-    constructor(private route: ActivatedRoute, private videoService: VideoService) {
-
-        console.log('in da constructor');
-     }
+    private videoOrigins = VideoOriginEnum;
+    constructor(private route: ActivatedRoute, private videoService: VideoService) { }
 
     ngOnInit() {
         this.route.params
@@ -42,14 +41,38 @@ export class VideoDetailsComponent implements OnInit {
       .subscribe((video: IVideo) => this.video = video);
     }
 
+    onSubmit(form: NgForm) {
+        console.log('model: ' + this.video);
+        console.log('form: ' + form.value );
+        if (this.video.id != null && this.video.id != "0") {
+            this.videoService.updateVideo(this.video).subscribe(
+            (res) => {
+                this.video = res;
+                console.log('successfully saved video with ID: ' + this.video.id)
+            },
+            (error) => console.log('error on saving video'));
+        } else {
+            this.videoService.createVideo(this.video).subscribe(
+            (res) => {
+                this.video = res;
+                console.log('successfully saved video with ID: ' + this.video.id)
+            },
+            (error) => console.log('error on saving video'));
+        }
+
+
+
+        
+    }
+
+
+
 
 
 
 }
-//     videoDetails: IVideo;
 //     videoForm: ControlGroup;
 //     //formBuilder: FormBuilder;
-//     videoOrigins = VideoOriginEnum;
 //     displayMode: string;
 
 

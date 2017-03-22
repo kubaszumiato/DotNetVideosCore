@@ -1,15 +1,23 @@
 <h3>Video Details</h3>
 <div *ngIf="video">
-<form #form="ngForm" novalidate ng-model>
-    <div class="form-group">
-        <label>Title:</label>
-        <input type="text" class="form-control" required placeholder="Name" name="video.title | async" ngModel>
-    </div>
+<form #form="ngForm" novalidate (submit)="onSubmit(form)" >    
     <fieldset class="form-group">
-        <label for="videoDetailsTitle">Title: </label>
-        <input type="text" class="form-control" [(ngModel)]="video.title" placeholder="Title" ngModel name="title" id="videoDetailsTitle" />        
+        <label for="videoTitle">Title: </label>
+        <input type="text" class="form-control" [(ngModel)]="video.title" name="video.title" placeholder="Title" id="videoTitle" />        
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="videoUrl">Url:</label>
+        <input type="text" class="form-control" [(ngModel)]="video.url" name="video.url" placeholder="Url" id="videoUrl" />
+    </fieldset>
+    
+    <fieldset class="form-group">
+        <label for="videoOrigin">Origin:</label>
+       <select class="form-control" [(ngModel)]="video.videoOrigin" name="video.videoOrigin">
+                <option *ngFor="let origin of videoOrigins | keys" [value]="origin.key">{{origin.value}}</option>
+            </select>
     </fieldset>
     <button class="btn btn-primary" type="submit">Ok</button>
+    {{form.value | json}}
 </form>
 
 

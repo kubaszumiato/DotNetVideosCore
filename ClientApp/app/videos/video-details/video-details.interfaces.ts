@@ -15,26 +15,26 @@ export interface IVideo {
   //each video must have an Url, whatever the place of publication
   url: string;
   //each video will have also it's url on dotnetvideos website
-  localUrl: string;
+  //localUrl?: string;
   //code defines the unique identifier of a movie within a given website; usually it's a part of URL
-  code: string;
+  //code: string;
   //mediaType describes what kind of movie is that (what type of file preciesly speaking)
-  mediaType: string;  
+  //mediaType: string;  
   //length in seconds
-  videoLength: number;  
+  //videoLength: number;  
   //videoType declares the website the movie is coming from; eg. YouTube
   videoOrigin: VideoOriginEnum
   //tags for movies; assigned by movie creator/importer
-  tags: Tag | Array<Tag>;    
+  //tags: Tag | Array<Tag>;    
   //internal rating by dotnet-videos users
   rating: number;  
   //who uploaded the movie [optional]
   //owner?: User;
   //we'd also like to know the watch count
-  watchedCount:  number;
-  createdDate : string;
+  //watchedCount:  number;
+  //createdDate : string;
   uploadedDate : string;
-  category : number;
+  //category : number;
 
 
 };

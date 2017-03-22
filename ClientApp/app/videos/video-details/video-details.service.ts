@@ -22,7 +22,7 @@ export class VideoService implements IVideoService
 
     GetVideo(id: string) : Observable<IVideo> 
     {
-        if (id == "0")
+        if (id == null || id == "0")
         {
             return this.http.get(this.videoApiUrl + "/Empty")
             .map((res:Response) => res.json())            
@@ -32,6 +32,36 @@ export class VideoService implements IVideoService
             .map((res: Response) => res.json())
             .do(res => console.log('Retrieved video: ' + JSON.stringify(res)));
             // .catch(this.handleGetVideoError);
+    }
+
+    createVideo(data: IVideo) : Observable<IVideo> {
+        // if (!VideoValidationService.validateVideo(data))
+        //     return;
+
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        
+        var jsoned = JSON.stringify(data);
+        console.log('service, create video.Video json: ' + jsoned);
+
+        return this.http.post('/api/videos/postvideo', JSON.stringify(data),
+            { headers: headers })
+            .map(res => res.json());
+    }
+
+    updateVideo(data: IVideo) : Observable<IVideo> {
+        // if (!VideoValidationService.validateVideo(data))
+        //     return;
+
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        
+        var jsoned = JSON.stringify(data);
+        console.log('service, create video.Video json: ' + jsoned);
+
+        return this.http.put('/api/videos/editvideo', JSON.stringify(data),
+            { headers: headers })
+            .map(res => res.json());
     }
 
 
@@ -118,20 +148,7 @@ export class VideoService implements IVideoService
     //     return result;
     // }
 
-    // createVideo(data: IVideo) : Observable<IVideo> {
-    //     if (!VideoValidationService.validateVideo(data))
-    //         return;
-
-    //     let headers = new Headers();
-    //     headers.append('Content-Type', 'application/json');
-        
-    //     var jsoned = JSON.stringify(data);
-    //     console.log('service, create video.Video json: ' + jsoned);
-
-    //     return this.http.post('/api/video', JSON.stringify(data),
-    //         { headers: headers })
-    //         .map(res => res.json());
-    // }
+   
 
     // validateVideo(entity: IVideo): boolean {
     //     let result: boolean = true;
