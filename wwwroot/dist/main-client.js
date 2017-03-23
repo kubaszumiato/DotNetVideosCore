@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f4336e93fd1ff4ff88d6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b6c0cbd39106b2d7bf4d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -7121,6 +7121,7 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__(67));
 __export(__webpack_require__(68));
+__export(__webpack_require__(122));
 
 
 /***/ }),
@@ -7985,24 +7986,14 @@ __webpack_require__(90);
 __webpack_require__(88);
 var video_services_1 = __webpack_require__(29);
 var video_details_enums_1 = __webpack_require__(42);
-//import {Component, Injectable, Input, OnInit} from '@angular/core';
-// //import {FORM_DIRECTIVES, FormBuilder, ControlGroup, AbstractControl, Control, Validators} from '@angular/common';
-// //import {RouteParams} from '@angular/router';
-// import {VideoValidationService} from '../video/video.services';
-// //import {IVideo, VideoDisplayMode, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces';
 var VideoDetailsComponent = (function () {
-    function VideoDetailsComponent(route, videoService) {
+    function VideoDetailsComponent(route, videoService, oEmbedService) {
         this.route = route;
         this.videoService = videoService;
+        this.oEmbedService = oEmbedService;
         this.videoOrigins = video_details_enums_1.VideoOriginEnum;
         this.videoUrl = new Subject_1.Subject();
     }
-    VideoDetailsComponent.prototype.verifyVideo = function (form) {
-        console.log('verifyVideo: ' + form.value);
-    };
-    VideoDetailsComponent.prototype.validateVideoUrl = function (event) {
-        this.videoUrl.next(event);
-    };
     VideoDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params
@@ -8016,10 +8007,14 @@ var VideoDetailsComponent = (function () {
             .distinctUntilChanged()
             .subscribe(function (url) { return _this.previewVideo(url); });
     };
+    //using Subject<string> to debounce url validation/video preview
+    VideoDetailsComponent.prototype.validateVideoUrl = function (event) {
+        this.videoUrl.next(event);
+    };
     VideoDetailsComponent.prototype.previewVideo = function (url) {
         var _this = this;
         this.video.url = url;
-        this.videoService.checkVideoOEmbed(url)
+        this.oEmbedService.checkVideoOEmbed(url)
             .subscribe(function (res) {
             _this.preview = res;
             console.log(_this.preview);
@@ -8049,88 +8044,9 @@ VideoDetailsComponent = __decorate([
         selector: 'video-details',
         template: __webpack_require__(82)
     }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute, video_services_1.VideoService])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, video_services_1.VideoService, video_services_1.oEmbedService])
 ], VideoDetailsComponent);
 exports.VideoDetailsComponent = VideoDetailsComponent;
-var oEmbed = (function () {
-    function oEmbed() {
-    }
-    return oEmbed;
-}());
-exports.oEmbed = oEmbed;
-//     videoForm: ControlGroup;
-//     //formBuilder: FormBuilder;
-//     displayMode: string;
-//     constructor(
-//         private fb: FormBuilder,
-//         private _params: RouteParams,
-//         public videoService: VideoService,
-//         public validationService: VideoValidationService) {
-//         let id = this._params.get('id');
-//         let mode = this._params.get('mode');
-//         this.displayMode = mode;
-//         if (!mode || mode === '') {
-//             //no mode? heck?
-//             console.log('no mode selected');
-//         }
-//         else if (mode === 'watch' || mode === 'edit') {
-//             console.log('mode: ' + mode);
-//             this.getVideo(id);
-//         }
-//         else { //add
-//             console.log('new video');
-//             this.videoDetails = this.videoService.getEmptyVideo();
-//         }
-//         if (mode && mode !== 'watch'){
-//             console.log('prepare form (not watching)');
-//             this.videoForm = this.getVideoForm(fb);
-//         }
-//     }
-//     getVideo(id: string): void {
-//         if (id && id !== '') {
-//             this.videoService.getVideo(id).subscribe((res) => {
-//                 this.videoDetails = res;
-//                 console.log('got video: ' + res);
-//             });
-//         }
-//     }
-//     public saveVideo(value: any) {
-//         console.log('videoDetails on submit: ' + this.videoDetails);
-//         this.videoService.createVideo(this.videoDetails).subscribe(
-//             (res) => {
-//                 this.videoDetails = res;
-//                 console.log('successfully saved video with ID: ' + this.videoDetails.id)
-//             },
-//             (error) => console.log('error on saving video'));
-//     }
-//     //where to put this?
-//     getVideoForm(fb: FormBuilder): ControlGroup {
-//         //that would be our form we need to build
-//         let result: ControlGroup = fb.group({
-//             //control for the movie title, required value
-//             'title': ['', Validators.required],
-//             //control for rating. Specific validator
-//             'rating': ['', VideoValidationService.ratingValidator],
-//             //video origin/source (YouTube, Vimeo, Channel9)
-//             'videoOrigin': [''],
-//             //url of the video, required value
-//             'url': ['', VideoValidationService.urlValidator]
-//         });
-//         result.controls['title'].valueChanges.subscribe(
-//             (value: string) => console.log('title changed to: ' + value)
-//         )
-//         result.controls['url'].valueChanges.subscribe(
-//             (value: string) => {
-//                 var origin = VideoValidationService.recognizeVideoByUrl(value);
-//                 this.videoDetails.videoOrigin = origin;
-//             });
-//         result.valueChanges.subscribe(
-//             (value: ControlGroup) => {
-//                 console.log('form changed to: ' + value.value);
-//             });
-//         return result;
-//     }
-// } 
 
 
 /***/ }),
@@ -9774,12 +9690,6 @@ var VideoService = (function () {
             .do(function (res) { return console.log('Retrieved video: ' + JSON.stringify(res)); });
         // .catch(this.handleGetVideoError);
     };
-    VideoService.prototype.checkVideoOEmbed = function (url) {
-        var oEmbedUrl = "https://vimeo.com/api/oembed.json?url=" + url;
-        return this.http.get(oEmbedUrl)
-            .map(function (res) { return res.json(); });
-        // .do(res => res => console.log('Retrieved oEmbed content: ' + JSON.stringify(res)));
-    };
     VideoService.prototype.createVideo = function (data) {
         // if (!VideoValidationService.validateVideo(data))
         //     return;
@@ -9989,7 +9899,7 @@ VideosModule = __decorate([
             video_list_component_1.VideoListComponent,
             video_details_component_1.VideoDetailsComponent
         ],
-        providers: [video_services_1.VideoService]
+        providers: [video_services_1.VideoService, video_services_1.oEmbedService]
         //,     exports: [RouterModule],
     })
 ], VideosModule);
@@ -11945,6 +11855,44 @@ module.exports = (__webpack_require__(1))(573);
 __webpack_require__(49);
 __webpack_require__(48);
 module.exports = __webpack_require__(47);
+
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var http_1 = __webpack_require__(30);
+__webpack_require__(92);
+var oEmbedService = (function () {
+    function oEmbedService(http) {
+        this.http = http;
+    }
+    oEmbedService.prototype.checkVideoOEmbed = function (url) {
+        var oEmbedUrl = "https://vimeo.com/api/oembed.json?url=" + url;
+        return this.http.get(oEmbedUrl)
+            .map(function (res) { return res.json(); });
+        // .do(res => res => console.log('Retrieved oEmbed content: ' + JSON.stringify(res)));
+    };
+    return oEmbedService;
+}());
+oEmbedService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], oEmbedService);
+exports.oEmbedService = oEmbedService;
 
 
 /***/ })

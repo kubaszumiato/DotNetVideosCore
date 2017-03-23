@@ -5,7 +5,7 @@ import {VideoValidationService} from './video.validation.service';
 import {IVideo} from './video-details.interfaces';
 import {VideoOriginEnum} from './video-details.enums';
 import {Observable} from 'rxjs/Rx';
-import {oEmbed} from './video-details.component';
+import { oEmbed } from '../video-oembed/video-oembed.interfaces';
 
 @Injectable()
 export class VideoService implements IVideoService
@@ -33,15 +33,7 @@ export class VideoService implements IVideoService
             .map((res: Response) => res.json())
             .do(res => console.log('Retrieved video: ' + JSON.stringify(res)));
             // .catch(this.handleGetVideoError);
-    }
-
-    checkVideoOEmbed(url: string): Observable<oEmbed>{
-        var oEmbedUrl = "https://vimeo.com/api/oembed.json?url=" + url;
-        return this.http.get(oEmbedUrl)
-        .map((res: Response) => res.json());
-       // .do(res => res => console.log('Retrieved oEmbed content: ' + JSON.stringify(res)));
-
-    }
+    }    
 
     createVideo(data: IVideo) : Observable<IVideo> {
         // if (!VideoValidationService.validateVideo(data))
