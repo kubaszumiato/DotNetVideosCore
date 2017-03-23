@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f4336e93fd1ff4ff88d6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5fafbff9520f4cc1ccb7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -7985,11 +7985,6 @@ __webpack_require__(90);
 __webpack_require__(88);
 var video_services_1 = __webpack_require__(29);
 var video_details_enums_1 = __webpack_require__(42);
-//import {Component, Injectable, Input, OnInit} from '@angular/core';
-// //import {FORM_DIRECTIVES, FormBuilder, ControlGroup, AbstractControl, Control, Validators} from '@angular/common';
-// //import {RouteParams} from '@angular/router';
-// import {VideoValidationService} from '../video/video.services';
-// //import {IVideo, VideoDisplayMode, VideoOriginEnum} from '../../../../shared/data-models/video.model.interfaces';
 var VideoDetailsComponent = (function () {
     function VideoDetailsComponent(route, videoService) {
         this.route = route;
@@ -7997,12 +7992,6 @@ var VideoDetailsComponent = (function () {
         this.videoOrigins = video_details_enums_1.VideoOriginEnum;
         this.videoUrl = new Subject_1.Subject();
     }
-    VideoDetailsComponent.prototype.verifyVideo = function (form) {
-        console.log('verifyVideo: ' + form.value);
-    };
-    VideoDetailsComponent.prototype.validateVideoUrl = function (event) {
-        this.videoUrl.next(event);
-    };
     VideoDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params
@@ -8015,6 +8004,10 @@ var VideoDetailsComponent = (function () {
             .debounceTime(1000)
             .distinctUntilChanged()
             .subscribe(function (url) { return _this.previewVideo(url); });
+    };
+    //using Subject<string> to debounce url validation/video preview
+    VideoDetailsComponent.prototype.validateVideoUrl = function (event) {
+        this.videoUrl.next(event);
     };
     VideoDetailsComponent.prototype.previewVideo = function (url) {
         var _this = this;
@@ -8052,85 +8045,6 @@ VideoDetailsComponent = __decorate([
     __metadata("design:paramtypes", [router_1.ActivatedRoute, video_services_1.VideoService])
 ], VideoDetailsComponent);
 exports.VideoDetailsComponent = VideoDetailsComponent;
-var oEmbed = (function () {
-    function oEmbed() {
-    }
-    return oEmbed;
-}());
-exports.oEmbed = oEmbed;
-//     videoForm: ControlGroup;
-//     //formBuilder: FormBuilder;
-//     displayMode: string;
-//     constructor(
-//         private fb: FormBuilder,
-//         private _params: RouteParams,
-//         public videoService: VideoService,
-//         public validationService: VideoValidationService) {
-//         let id = this._params.get('id');
-//         let mode = this._params.get('mode');
-//         this.displayMode = mode;
-//         if (!mode || mode === '') {
-//             //no mode? heck?
-//             console.log('no mode selected');
-//         }
-//         else if (mode === 'watch' || mode === 'edit') {
-//             console.log('mode: ' + mode);
-//             this.getVideo(id);
-//         }
-//         else { //add
-//             console.log('new video');
-//             this.videoDetails = this.videoService.getEmptyVideo();
-//         }
-//         if (mode && mode !== 'watch'){
-//             console.log('prepare form (not watching)');
-//             this.videoForm = this.getVideoForm(fb);
-//         }
-//     }
-//     getVideo(id: string): void {
-//         if (id && id !== '') {
-//             this.videoService.getVideo(id).subscribe((res) => {
-//                 this.videoDetails = res;
-//                 console.log('got video: ' + res);
-//             });
-//         }
-//     }
-//     public saveVideo(value: any) {
-//         console.log('videoDetails on submit: ' + this.videoDetails);
-//         this.videoService.createVideo(this.videoDetails).subscribe(
-//             (res) => {
-//                 this.videoDetails = res;
-//                 console.log('successfully saved video with ID: ' + this.videoDetails.id)
-//             },
-//             (error) => console.log('error on saving video'));
-//     }
-//     //where to put this?
-//     getVideoForm(fb: FormBuilder): ControlGroup {
-//         //that would be our form we need to build
-//         let result: ControlGroup = fb.group({
-//             //control for the movie title, required value
-//             'title': ['', Validators.required],
-//             //control for rating. Specific validator
-//             'rating': ['', VideoValidationService.ratingValidator],
-//             //video origin/source (YouTube, Vimeo, Channel9)
-//             'videoOrigin': [''],
-//             //url of the video, required value
-//             'url': ['', VideoValidationService.urlValidator]
-//         });
-//         result.controls['title'].valueChanges.subscribe(
-//             (value: string) => console.log('title changed to: ' + value)
-//         )
-//         result.controls['url'].valueChanges.subscribe(
-//             (value: string) => {
-//                 var origin = VideoValidationService.recognizeVideoByUrl(value);
-//                 this.videoDetails.videoOrigin = origin;
-//             });
-//         result.valueChanges.subscribe(
-//             (value: ControlGroup) => {
-//                 console.log('form changed to: ' + value.value);
-//             });
-//         return result;
-//     }
-// } 
 
 
 /***/ }),
@@ -9773,12 +9687,6 @@ var VideoService = (function () {
             .map(function (res) { return res.json(); })
             .do(function (res) { return console.log('Retrieved video: ' + JSON.stringify(res)); });
         // .catch(this.handleGetVideoError);
-    };
-    VideoService.prototype.checkVideoOEmbed = function (url) {
-        var oEmbedUrl = "https://vimeo.com/api/oembed.json?url=" + url;
-        return this.http.get(oEmbedUrl)
-            .map(function (res) { return res.json(); });
-        // .do(res => res => console.log('Retrieved oEmbed content: ' + JSON.stringify(res)));
     };
     VideoService.prototype.createVideo = function (data) {
         // if (!VideoValidationService.validateVideo(data))
