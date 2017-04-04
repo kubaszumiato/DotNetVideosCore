@@ -31,6 +31,7 @@ export class VideoDetailsComponent implements OnInit {
     private videoUrl = new Subject<string>();
     private preview: oEmbed;
 
+
     constructor(private route: ActivatedRoute, private videoService: VideoService, private oEmbedService: oEmbedService) { } 
 
 
@@ -39,12 +40,12 @@ export class VideoDetailsComponent implements OnInit {
             .switchMap((params: Params) => this.videoService.GetVideo(params['id']))
             .subscribe((video: IVideo) => {
                 this.video = video;
-                this.previewVideo(video.url);
+                this.previewVideo(video.url, video.videoOrigin.toString());
             });
         this.videoUrl
             .debounceTime(1000)
             .distinctUntilChanged()
-            .subscribe(url => this.previewVideo(url));
+            .subscribe(url => this.previewVideo(url, ""));
 
     }
 
@@ -53,14 +54,18 @@ export class VideoDetailsComponent implements OnInit {
         this.videoUrl.next(event);
     }
 
-    previewVideo(url){
+    previewVideo(url : string, providerName: string){
         this.video.url = url;
         this.oEmbedService.checkVideoOEmbed(url)
         
         .subscribe(res => {
             this.preview = res;
             console.log(this.preview);
-        });
+            },
+            err => {
+                console.log(err);
+            }
+        );
     }
 
     onSubmit(form: NgForm) {

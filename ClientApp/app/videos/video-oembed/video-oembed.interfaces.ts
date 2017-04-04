@@ -20,6 +20,13 @@ export interface oEmbed{
     video_id: any;
     uri: any;
 
+    providerName: string;
+
     //used to check if url matches our provider
-    matchProviderByUrl(url: string) : string;
+    matchProviderByUrl(url: string) : boolean;
+    getContentUrl(url: string) : string;
+}
+
+export interface oEmbedDictionary {
+    [providerName: string] : oEmbed;
 }
