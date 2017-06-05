@@ -15,6 +15,7 @@ import {NgFor} from '@angular/common';
 import {Router} from '@angular/router';
 
 import {VideoService} from '../video/video.services';
+import {oEmbedService} from '../video-oembed/video-oembed.service';
 import { IVideo } from '../video/video.interfaces';
 import { Observable } from "rxjs/Observable";
 //import {VideoDetailsComponent} from '../video-details/video-details.component';
@@ -23,7 +24,20 @@ import { Observable } from "rxjs/Observable";
         selector: 'video-list',
         //providers: [... HTTP_PROVIDERS, VideoService, VideoDetailsComponent],
         //directives: [VideoDetailsComponent],
-        templateUrl: './video-list.component.html'
+        templateUrl: './video-list.component.html',
+        styles: [`
+  	ul { padding:0; width:480; margin:20px auto; list-style-type: none;}
+  	li { display:inline;}
+        .tn{ 
+	   margin:2px 0px;
+	   box-shadow:#999 1px 1px 3px 1px; 
+	   cursor: pointer 
+        }
+    li a { text-decoreation: none; }
+  	.modal-content {
+	    width: 670px !important;
+	}
+  `]
     })
 
 export class VideoListComponent implements OnInit {
@@ -34,7 +48,7 @@ export class VideoListComponent implements OnInit {
     public selectedVideo: IVideo;
     public videos: Observable<IVideo>;
 
-    constructor(private http: Http, private videoService: VideoService) {
+    constructor(private http: Http, private videoService: VideoService, private oembedService: oEmbedService) {
     }
 
     // constructor(

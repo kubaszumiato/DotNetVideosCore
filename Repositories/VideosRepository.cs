@@ -65,6 +65,7 @@ namespace DotNetVideosCore.Repositories
 
         public async Task<Video> InsertVideo(Video video)
         {
+            video.UploadedDate = DateTime.Now;
             await _context.Videos.InsertOneAsync(video);
             return await this.Get(video.Id.ToString());
         }

@@ -1,21 +1,28 @@
 <div class="container" *ngIf="videos">
     <!--(click)="onVideoSelected(video)"-->
-    
+
     <h1> Hello from video-list component </h1>
     <ul>
-      <li *ngFor="let video of videos | async">
-        {{video.id}} | <a [routerLink] = "['/video-details/', video.id]">Edit</a>
-      </li>
-    </ul>
+        <li *ngFor="let video of videos | async">
+            <!--<div *ngIf="video.Url">-->
+            <a class="img-thumbnail" [routerLink]="['/video-details/', video.id]">
+                <img [src]="video.thumbUrl"  /> <br /> 
+                {{video.title}} <br /> ({{video.id}})
+                </a>
+    <!--</div>-->
+</li>
 
-    <div class="row">
-        <a [routerLink] = "['/video-details/', 0]">Add
+
+</ul>
+
+<div class="row">
+    <a [routerLink]="['/video-details/', 0]">Add
                         </a>
-        <!--<div class="col-sm-6 col-md-3" *ngFor=" let video of videos ">
+    <!--<div class="col-sm-6 col-md-3" *ngFor=" let video of videos ">
             <div class="thumbnail">
                 <p *ngIf="!videos"><em>Loading...</em></p>-->
 
-                <!--<table class='table'>
+    <!--<table class='table'>
                     <thead>
                         <tr>
                             <th>Created</th>
@@ -35,7 +42,7 @@
                 </table>-->
 
 
-                <!--<img *ngIf="video.thumbUrl" [src]="video.thumbUrl" />
+    <!--<img *ngIf="video.thumbUrl" [src]="video.thumbUrl" />
                 <div class="caption">
                     <h3>
                         <a [routerLink] = "['Video', {mode: 'watch', id: video._id}]">
@@ -48,7 +55,7 @@
                     <p><a [href]="video.localUrl" class="btn btn-primary" role="button">Watch</a> <a [href]="video.url" class="btn btn-default"
                             role="button">Watch</a></p>
                 </div>-->
-            <!--</div>
+    <!--</div>
         </div>-->
-    </div>
+</div>
 </div>

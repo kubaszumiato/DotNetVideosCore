@@ -48,6 +48,7 @@ export class oEmbedService
         {
             throw new RangeError("Couldn't match the video provider by URL");
         }
+        console.log("calling get content by url, for: " + url);
 
         let oEmbedUrl = this.providers[providerName].getContentUrl(url);
 

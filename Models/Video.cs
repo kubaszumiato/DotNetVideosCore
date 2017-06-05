@@ -11,6 +11,7 @@ namespace DotNetVideosCore.Models
         public string Id { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }
+        public string ThumbUrl { get; set; }
         //public string LocalUrl { get; set; }
         //public string Code { get; set; }
         //public string MediaType { get; set; }
@@ -22,6 +23,6 @@ namespace DotNetVideosCore.Models
         //public DateTime CreatedDate { get; set; }
         public DateTime UploadedDate { get; set; }
         //public VideoCategoryEnum Category { get; set; }
-       // public User Owner { get; set; }
+        // public User Owner { get; set; }
     }
 }

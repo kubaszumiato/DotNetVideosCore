@@ -25,18 +25,25 @@ describe('URL validation', () => {
     });
 
     it('accepts proper urls for albums', () => {
-
+        //https://vimeo.com › Dream Film Studio › Videos
     });
 
     it('accepts proper urls for channels', () => {
-
+        expect(vimeo.matchProviderByUrl("https://vimeo.com/channels/documentaryfilm")).toBe(false);
+        expect(vimeo.matchProviderByUrl("https://vimeo.com/channels/documentaryfilm/120206922")).toBe(true);
     });
 
     it('accepts proper urls for groups', () => {
-
+        expect(vimeo.matchProviderByUrl("https://vimeo.com/groups")).toBe(false);
+        expect(vimeo.matchProviderByUrl("https://vimeo.com/groups/weekendchallenge")).toBe(false);
+        expect(vimeo.matchProviderByUrl("https://vimeo.com/groups/weekendchallenge/videos/210534764")).toBe(true);
     });
 
     it('accepts proper urls for ondemand', () => {
+        expect(vimeo.matchProviderByUrl("https://vimeo.com/ondemand/browse/")).toBe(false);
+        expect(vimeo.matchProviderByUrl("https://vimeo.com/ondemand/browse/animation")).toBe(false);
+        expect(vimeo.matchProviderByUrl("https://vimeo.com/ondemand/suddenly1954")).toBe(true);
 
+        //https://vimeo.com/ondemand/suddenly1954
     });
 });
