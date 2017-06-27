@@ -1,0 +1,8 @@
+	ul { padding:0;  margin:20px auto; list-style-type: none;}
+  	li { display:inline; }
+  /*      .tn{ 
+	   margin:2px 0px;
+	   box-shadow:#999 1px 1px 3px 1px; 
+	   cursor: pointer;
+        } */
+    li { text-decoration: none;}

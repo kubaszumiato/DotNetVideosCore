@@ -21,7 +21,11 @@ export interface IVideo {
   //mediaType describes what kind of movie is that (what type of file preciesly speaking)
   //mediaType: string;  
   //length in seconds
+  description: string;
+  
   thumbUrl: string;
+  originalTitle: string;
+  originalDescription: string;
   //videoLength: number;  
   //videoType declares the website the movie is coming from; eg. YouTube
   videoOrigin: VideoOriginEnum

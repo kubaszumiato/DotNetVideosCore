@@ -6,6 +6,10 @@
         <input type="text" class="form-control" [(ngModel)]="video.title" name="video.title" placeholder="Title" id="videoTitle" />        
     </fieldset>
     <fieldset class="form-group">
+        <label for="videoTitle">Description: </label>
+        <input type="text" class="form-control" [(ngModel)]="video.description" name="video.description" placeholder="Description" id="videoDescription" />        
+    </fieldset>
+    <fieldset class="form-group">
         <label for="videoUrl">Url:</label>
         <input type="text" class="form-control" [ngModel]="video.url" (ngModelChange)="validateVideoUrl($event)" name="video.url" placeholder="Url" id="videoUrl" />
     </fieldset>    

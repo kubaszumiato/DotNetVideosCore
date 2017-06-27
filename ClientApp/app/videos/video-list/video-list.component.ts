@@ -25,19 +25,7 @@ import { Observable } from "rxjs/Observable";
         //providers: [... HTTP_PROVIDERS, VideoService, VideoDetailsComponent],
         //directives: [VideoDetailsComponent],
         templateUrl: './video-list.component.html',
-        styles: [`
-  	ul { padding:0; width:480; margin:20px auto; list-style-type: none;}
-  	li { display:inline;}
-        .tn{ 
-	   margin:2px 0px;
-	   box-shadow:#999 1px 1px 3px 1px; 
-	   cursor: pointer 
-        }
-    li a { text-decoreation: none; }
-  	.modal-content {
-	    width: 670px !important;
-	}
-  `]
+        styleUrls: ['./video-list.component.css']
     })
 
 export class VideoListComponent implements OnInit {

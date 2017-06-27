@@ -22,19 +22,7 @@ import { SafePipe } from '../../pipes/safe.html.pipe';
 @Component(
     {
         selector: 'video-details',
-        template: require('./video-details.component.html'),
-        styles: [`
-  	ul { padding:0; width:480; margin:20px auto; list-style-type: none;}
-  	li { display:inline;}
-        .tn{ 
-	   margin:2px 0px;
-	   box-shadow:#999 1px 1px 3px 1px; 
-	   cursor: pointer 
-        }
-  	.modal-content {
-	    width: 670px !important;
-	}
-  `]
+        template: require('./video-details.component.html')
     })
 export class VideoDetailsComponent implements OnInit {
 
@@ -77,6 +65,8 @@ export class VideoDetailsComponent implements OnInit {
         .subscribe(res => {
             this.preview = res;
             this.video.thumbUrl = res.thumbnail_url as string;
+            this.video.originalTitle = res.title as string;
+            this.video.originalDescription = res.description as string;
             console.log(this.preview);
             },
             err => {
