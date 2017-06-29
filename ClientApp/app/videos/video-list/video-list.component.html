@@ -14,11 +14,10 @@
             <p><strong>Original Title: </strong>{{video.originalTitle}}</p>
 
             <div *ngIf="video.description">
-                <p><strong>Original Description: </strong>{{video.originalDescription}}</p>
-                <p><a href="#" class="btn btn-primary" role="button">Play</a>
+                <p><strong>Description: </strong>{{video.description}}</p>
             </div>
-            <div *ngIf="!video.description && video.originalDescription">
-                <p><strong>Original Description: </strong>{{video.originalDescription}}</p>
+            <div *ngIf="!video.description">
+                <p><strong>Description: </strong>{{video.originalDescription}}</p>
             </div>
             <p><a href="#" class="btn btn-primary" role="button">Play</a>
                 <a [routerLink]="['/video-details/', video.id]" class="btn btn-default" role="button">Edit</a></p>

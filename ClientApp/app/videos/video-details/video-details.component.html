@@ -1,32 +1,36 @@
-<h3>Video Details</h3>
+<h3>Video Details lalal</h3>
 <div *ngIf="video">
-<form #form="ngForm" novalidate (submit)="onSubmit(form)" >    
-    <fieldset class="form-group">
-        <label for="videoTitle">Title: </label>
-        <input type="text" class="form-control" [(ngModel)]="video.title" name="video.title" placeholder="Title" id="videoTitle" />        
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="videoTitle">Description: </label>
-        <input type="text" class="form-control" [(ngModel)]="video.description" name="video.description" placeholder="Description" id="videoDescription" />        
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="videoUrl">Url:</label>
-        <input type="text" class="form-control" [ngModel]="video.url" (ngModelChange)="validateVideoUrl($event)" name="video.url" placeholder="Url" id="videoUrl" />
-    </fieldset>    
-    <fieldset class="form-group">
-        <label for="videoOrigin">Origin:</label>
-       <select class="form-control" [(ngModel)]="video.videoOrigin" name="video.videoOrigin">
+    <form #form="ngForm" novalidate (submit)="onSubmit(form)">
+        <fieldset class="form-group">
+            <label for="videoTitle">Title: </label>
+            <input type="text" class="form-control" [(ngModel)]="video.title" name="video.title" placeholder="Title" id="videoTitle"
+            />
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="videoTitle">Description: </label>
+            <input type="text" class="form-control" [(ngModel)]="video.description" name="video.description" placeholder="Description"
+                id="videoDescription" />
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="videoUrl">Url:</label>
+            <input type="text" class="form-control" [ngModel]="video.url" (ngModelChange)="validateVideoUrl($event)" name="video.url"
+                placeholder="Url" id="videoUrl" />
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="videoOrigin">Origin:</label>
+            <select class="form-control" [(ngModel)]="video.videoOrigin" name="video.videoOrigin">
                 <option *ngFor="let origin of videoOrigins | keys" [value]="origin.key">{{origin.value}}</option>
             </select>
-    </fieldset>
-    <fieldset class="form-group">
-        <label>Thumbnail Image:</label>
-        <img [src] = "video.thumbUrl" />
-    </fieldset>
-    <button class="btn btn-primary" type="submit">Ok</button>
-    {{ form.value | json}}
-    {{ video | json }}
-</form>
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Thumbnail Image:</label>
+            <img [src]="video.thumbUrl" />
+        </fieldset>
+        <button class="btn btn-primary" type="submit">Ok</button>
+        <br /> Form: {{ form.value | json}}
+        <br /> Video: {{ video | json }}
+    </form>
+    <button class="btn btn-primary">Back</button>
 </div>
 <div class="container" [innerHtml]="preview?.html | safe: 'html'">
 

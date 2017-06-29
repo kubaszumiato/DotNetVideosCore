@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8f8e538622b3e00db00c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b01b44555b66f5abdc0d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8102,15 +8102,15 @@ var VideoDetailsComponent = (function () {
             }, function (error) { return console.log('error on saving video'); });
         }
     };
+    VideoDetailsComponent = __decorate([
+        core_1.Component({
+            selector: 'video-details',
+            template: __webpack_require__(87)
+        }),
+        __metadata("design:paramtypes", [router_1.ActivatedRoute, video_services_1.VideoService, video_services_1.oEmbedService])
+    ], VideoDetailsComponent);
     return VideoDetailsComponent;
 }());
-VideoDetailsComponent = __decorate([
-    core_1.Component({
-        selector: 'video-details',
-        template: __webpack_require__(87)
-    }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute, video_services_1.VideoService, video_services_1.oEmbedService])
-], VideoDetailsComponent);
 exports.VideoDetailsComponent = VideoDetailsComponent;
 
 
@@ -8186,18 +8186,18 @@ var VideoListComponent = (function () {
         console.log('selected video with id: ' + selection.id);
         // this._router.navigate(['Video', { mode: 'watch', id: selection.id }]);
     };
+    VideoListComponent = __decorate([
+        core_1.Component({
+            selector: 'video-list',
+            //providers: [... HTTP_PROVIDERS, VideoService, VideoDetailsComponent],
+            //directives: [VideoDetailsComponent],
+            template: __webpack_require__(88),
+            styles: [__webpack_require__(110)]
+        }),
+        __metadata("design:paramtypes", [http_1.Http, video_services_1.VideoService, video_oembed_service_1.oEmbedService])
+    ], VideoListComponent);
     return VideoListComponent;
 }());
-VideoListComponent = __decorate([
-    core_1.Component({
-        selector: 'video-list',
-        //providers: [... HTTP_PROVIDERS, VideoService, VideoDetailsComponent],
-        //directives: [VideoDetailsComponent],
-        template: __webpack_require__(88),
-        styles: [__webpack_require__(110)]
-    }),
-    __metadata("design:paramtypes", [http_1.Http, video_services_1.VideoService, video_oembed_service_1.oEmbedService])
-], VideoListComponent);
 exports.VideoListComponent = VideoListComponent;
 
 
@@ -8259,12 +8259,12 @@ var oEmbedService = (function () {
             .map(function (res) { return res.json(); });
         // .do(res => res => console.log('Retrieved oEmbed content: ' + JSON.stringify(res)));
     };
+    oEmbedService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], oEmbedService);
     return oEmbedService;
 }());
-oEmbedService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], oEmbedService);
 exports.oEmbedService = oEmbedService;
 
 
@@ -9447,31 +9447,31 @@ var videos_module_1 = __webpack_require__(75);
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            bootstrap: [app_component_1.AppComponent],
+            declarations: [
+                app_component_1.AppComponent,
+                navmenu_component_1.NavMenuComponent,
+                counter_component_1.CounterComponent,
+                fetchdata_component_1.FetchDataComponent,
+                home_component_1.HomeComponent
+            ],
+            imports: [
+                angular2_universal_1.UniversalModule,
+                videos_module_1.VideosModule,
+                router_1.RouterModule.forRoot([
+                    { path: '', redirectTo: 'home', pathMatch: 'full' },
+                    { path: 'home', component: home_component_1.HomeComponent },
+                    { path: 'counter', component: counter_component_1.CounterComponent },
+                    { path: 'fetch-data', component: fetchdata_component_1.FetchDataComponent },
+                    { path: '**', redirectTo: 'home' }
+                ])
+            ]
+        })
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        bootstrap: [app_component_1.AppComponent],
-        declarations: [
-            app_component_1.AppComponent,
-            navmenu_component_1.NavMenuComponent,
-            counter_component_1.CounterComponent,
-            fetchdata_component_1.FetchDataComponent,
-            home_component_1.HomeComponent
-        ],
-        imports: [
-            angular2_universal_1.UniversalModule,
-            videos_module_1.VideosModule,
-            router_1.RouterModule.forRoot([
-                { path: '', redirectTo: 'home', pathMatch: 'full' },
-                { path: 'home', component: home_component_1.HomeComponent },
-                { path: 'counter', component: counter_component_1.CounterComponent },
-                { path: 'fetch-data', component: fetchdata_component_1.FetchDataComponent },
-                { path: '**', redirectTo: 'home' }
-            ])
-        ]
-    })
-], AppModule);
 exports.AppModule = AppModule;
 
 
@@ -9492,15 +9492,15 @@ var core_1 = __webpack_require__(0);
 var AppComponent = (function () {
     function AppComponent() {
     }
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'app',
+            template: __webpack_require__(82),
+            styles: [__webpack_require__(108)]
+        })
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'app',
-        template: __webpack_require__(82),
-        styles: [__webpack_require__(108)]
-    })
-], AppComponent);
 exports.AppComponent = AppComponent;
 
 
@@ -9523,14 +9523,14 @@ var safe_html_pipe_1 = __webpack_require__(68);
 var CommonModule = (function () {
     function CommonModule() {
     }
+    CommonModule = __decorate([
+        core_1.NgModule({
+            declarations: [enum_keys_pipe_1.EnumKeysPipe, safe_html_pipe_1.SafePipe],
+            exports: [enum_keys_pipe_1.EnumKeysPipe, safe_html_pipe_1.SafePipe]
+        })
+    ], CommonModule);
     return CommonModule;
 }());
-CommonModule = __decorate([
-    core_1.NgModule({
-        declarations: [enum_keys_pipe_1.EnumKeysPipe, safe_html_pipe_1.SafePipe],
-        exports: [enum_keys_pipe_1.EnumKeysPipe, safe_html_pipe_1.SafePipe]
-    })
-], CommonModule);
 exports.CommonModule = CommonModule;
 
 
@@ -9555,14 +9555,14 @@ var CounterComponent = (function () {
     CounterComponent.prototype.incrementCounter = function () {
         this.currentCount++;
     };
+    CounterComponent = __decorate([
+        core_1.Component({
+            selector: 'counter',
+            template: __webpack_require__(83)
+        })
+    ], CounterComponent);
     return CounterComponent;
 }());
-CounterComponent = __decorate([
-    core_1.Component({
-        selector: 'counter',
-        template: __webpack_require__(83)
-    })
-], CounterComponent);
 exports.CounterComponent = CounterComponent;
 
 
@@ -9587,15 +9587,15 @@ var http_1 = __webpack_require__(22);
 var FetchDataComponent = (function () {
     function FetchDataComponent(http) {
     }
+    FetchDataComponent = __decorate([
+        core_1.Component({
+            selector: 'fetchdata',
+            template: __webpack_require__(84)
+        }),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], FetchDataComponent);
     return FetchDataComponent;
 }());
-FetchDataComponent = __decorate([
-    core_1.Component({
-        selector: 'fetchdata',
-        template: __webpack_require__(84)
-    }),
-    __metadata("design:paramtypes", [http_1.Http])
-], FetchDataComponent);
 exports.FetchDataComponent = FetchDataComponent;
 
 
@@ -9616,14 +9616,14 @@ var core_1 = __webpack_require__(0);
 var HomeComponent = (function () {
     function HomeComponent() {
     }
+    HomeComponent = __decorate([
+        core_1.Component({
+            selector: 'home',
+            template: __webpack_require__(85)
+        })
+    ], HomeComponent);
     return HomeComponent;
 }());
-HomeComponent = __decorate([
-    core_1.Component({
-        selector: 'home',
-        template: __webpack_require__(85)
-    })
-], HomeComponent);
 exports.HomeComponent = HomeComponent;
 
 
@@ -9644,15 +9644,15 @@ var core_1 = __webpack_require__(0);
 var NavMenuComponent = (function () {
     function NavMenuComponent() {
     }
+    NavMenuComponent = __decorate([
+        core_1.Component({
+            selector: 'nav-menu',
+            template: __webpack_require__(86),
+            styles: [__webpack_require__(109)]
+        })
+    ], NavMenuComponent);
     return NavMenuComponent;
 }());
-NavMenuComponent = __decorate([
-    core_1.Component({
-        selector: 'nav-menu',
-        template: __webpack_require__(86),
-        styles: [__webpack_require__(109)]
-    })
-], NavMenuComponent);
 exports.NavMenuComponent = NavMenuComponent;
 
 
@@ -9684,11 +9684,11 @@ var EnumKeysPipe = (function () {
         }
         return keys;
     };
+    EnumKeysPipe = __decorate([
+        core_1.Pipe({ name: 'keys' })
+    ], EnumKeysPipe);
     return EnumKeysPipe;
 }());
-EnumKeysPipe = __decorate([
-    core_1.Pipe({ name: 'keys' })
-], EnumKeysPipe);
 exports.EnumKeysPipe = EnumKeysPipe;
 
 
@@ -9731,14 +9731,14 @@ var SafePipe = (function () {
                 throw new Error("Unable to bypass security for invalid type: " + type);
         }
     };
+    SafePipe = __decorate([
+        core_1.Pipe({
+            name: 'safe'
+        }),
+        __metadata("design:paramtypes", [platform_browser_1.DomSanitizer])
+    ], SafePipe);
     return SafePipe;
 }());
-SafePipe = __decorate([
-    core_1.Pipe({
-        name: 'safe'
-    }),
-    __metadata("design:paramtypes", [platform_browser_1.DomSanitizer])
-], SafePipe);
 exports.SafePipe = SafePipe;
 
 
@@ -9800,12 +9800,12 @@ var VideoService = (function () {
         return this.http.put('/api/videos/editvideo', jsoned, { headers: headers })
             .map(function (res) { return res.json(); });
     };
+    VideoService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], VideoService);
     return VideoService;
 }());
-VideoService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], VideoService);
 exports.VideoService = VideoService;
 
 
@@ -9894,11 +9894,11 @@ var VideoValidationService = (function () {
         // }
         return video_details_enums_1.VideoOriginEnum.Unknown;
     };
+    VideoValidationService = __decorate([
+        core_1.Injectable()
+    ], VideoValidationService);
     return VideoValidationService;
 }());
-VideoValidationService = __decorate([
-    core_1.Injectable()
-], VideoValidationService);
 exports.VideoValidationService = VideoValidationService;
 
 
@@ -9992,14 +9992,14 @@ var routes = [
 var VideosRoutingModule = (function () {
     function VideosRoutingModule() {
     }
+    VideosRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [router_1.RouterModule.forChild(routes)],
+            exports: [router_1.RouterModule]
+        })
+    ], VideosRoutingModule);
     return VideosRoutingModule;
 }());
-VideosRoutingModule = __decorate([
-    core_1.NgModule({
-        imports: [router_1.RouterModule.forChild(routes)],
-        exports: [router_1.RouterModule]
-    })
-], VideosRoutingModule);
 exports.VideosRoutingModule = VideosRoutingModule;
 
 
@@ -10027,24 +10027,24 @@ var video_services_1 = __webpack_require__(30);
 var VideosModule = (function () {
     function VideosModule() {
     }
+    VideosModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                angular2_universal_1.UniversalModule,
+                common_module_1.CommonModule,
+                videos_routing_module_1.VideosRoutingModule,
+                forms_1.FormsModule
+            ],
+            declarations: [
+                video_list_component_1.VideoListComponent,
+                video_details_component_1.VideoDetailsComponent
+            ],
+            providers: [video_services_1.VideoService, video_services_1.oEmbedService]
+            //,     exports: [RouterModule],
+        })
+    ], VideosModule);
     return VideosModule;
 }());
-VideosModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            angular2_universal_1.UniversalModule,
-            common_module_1.CommonModule,
-            videos_routing_module_1.VideosRoutingModule,
-            forms_1.FormsModule
-        ],
-        declarations: [
-            video_list_component_1.VideoListComponent,
-            video_details_component_1.VideoDetailsComponent
-        ],
-        providers: [video_services_1.VideoService, video_services_1.oEmbedService]
-        //,     exports: [RouterModule],
-    })
-], VideosModule);
 exports.VideosModule = VideosModule;
 
 
@@ -10450,13 +10450,13 @@ module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-invers
 /* 87 */
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Video Details</h3>\r\n<div *ngIf=\"video\">\r\n<form #form=\"ngForm\" novalidate (submit)=\"onSubmit(form)\" >    \r\n    <fieldset class=\"form-group\">\r\n        <label for=\"videoTitle\">Title: </label>\r\n        <input type=\"text\" class=\"form-control\" [(ngModel)]=\"video.title\" name=\"video.title\" placeholder=\"Title\" id=\"videoTitle\" />        \r\n    </fieldset>\r\n    <fieldset class=\"form-group\">\r\n        <label for=\"videoTitle\">Description: </label>\r\n        <input type=\"text\" class=\"form-control\" [(ngModel)]=\"video.description\" name=\"video.description\" placeholder=\"Description\" id=\"videoDescription\" />        \r\n    </fieldset>\r\n    <fieldset class=\"form-group\">\r\n        <label for=\"videoUrl\">Url:</label>\r\n        <input type=\"text\" class=\"form-control\" [ngModel]=\"video.url\" (ngModelChange)=\"validateVideoUrl($event)\" name=\"video.url\" placeholder=\"Url\" id=\"videoUrl\" />\r\n    </fieldset>    \r\n    <fieldset class=\"form-group\">\r\n        <label for=\"videoOrigin\">Origin:</label>\r\n       <select class=\"form-control\" [(ngModel)]=\"video.videoOrigin\" name=\"video.videoOrigin\">\r\n                <option *ngFor=\"let origin of videoOrigins | keys\" [value]=\"origin.key\">{{origin.value}}</option>\r\n            </select>\r\n    </fieldset>\r\n    <fieldset class=\"form-group\">\r\n        <label>Thumbnail Image:</label>\r\n        <img [src] = \"video.thumbUrl\" />\r\n    </fieldset>\r\n    <button class=\"btn btn-primary\" type=\"submit\">Ok</button>\r\n    {{ form.value | json}}\r\n    {{ video | json }}\r\n</form>\r\n</div>\r\n<div class=\"container\" [innerHtml]=\"preview?.html | safe: 'html'\">\r\n\r\n    <hr />\r\n    <!--<div *ngIf=\"displayMode === 'watch'\">\r\n        <video-watch [video]=\"videoDetails\">\r\n        </video-watch>\r\n    </div>\r\n    <div *ngIf=\"displayMode !== 'watch'\">\r\n        <form [ngFormModel]=\"videoForm\" id=\"video-details-add\" *ngIf=\"videoDetails\" (ngSubmit)=\"saveVideo(videoForm.value)\">\r\n            \r\n            <fieldset class=\"form-group\">\r\n                <label>Rating: </label>\r\n                <input class=\"form-control\" placeholder=\"rating\" [(ngModel)]=\"videoDetails.rating\" ngControl=\"rating\" />\r\n                <span *ngIf=\"!videoForm.controls.rating?.valid\">\r\n                The rating must be between 0 and 5!\r\n            </span>\r\n            </fieldset>\r\n            <fieldset class=\"form-group\">\r\n                <label>url: </label>\r\n                <input class=\"form-control\" placeholder=\"url\" [(ngModel)]=\"videoDetails.url\" ngControl=\"url\" />\r\n                <ul *ngIf=\"!videoForm.controls.url?.valid\">\r\n                    The URL is invalid. Possible issues:<br />\r\n                    <li *ngIf=\"videoForm.controls.url?.emptyUrl\">\r\n                        The URL cannot be empty\r\n                    </li>\r\n                    <li *ngIf=\"videoForm.controls.url?.invalidUrl\">\r\n                        The URL format was not recognized by the system.\r\n                    </li>\r\n                </ul>\r\n            </fieldset>\r\n            <fieldset>\r\n                <label for=\"VideoOrigin\">Source:</label>\r\n                <select class=\"form-control\" [(ngModel)]=\"videoDetails.videoOrigin\" ngControl=\"videoOrigin\">\r\n                <option *ngFor=\"let origin of videoOrigins | keys\" [value]=\"origin.key\">{{origin.value}}</option>\r\n            </select>\r\n            </fieldset>\r\n\r\n            <button type=\"submit\" class=\"ui button\">Submit</button>\r\n        </form>\r\n    </div>-->\r\n</div>";
+module.exports = "<h3>Video Details lalal</h3>\r\n<div *ngIf=\"video\">\r\n    <form #form=\"ngForm\" novalidate (submit)=\"onSubmit(form)\">\r\n        <fieldset class=\"form-group\">\r\n            <label for=\"videoTitle\">Title: </label>\r\n            <input type=\"text\" class=\"form-control\" [(ngModel)]=\"video.title\" name=\"video.title\" placeholder=\"Title\" id=\"videoTitle\"\r\n            />\r\n        </fieldset>\r\n        <fieldset class=\"form-group\">\r\n            <label for=\"videoTitle\">Description: </label>\r\n            <input type=\"text\" class=\"form-control\" [(ngModel)]=\"video.description\" name=\"video.description\" placeholder=\"Description\"\r\n                id=\"videoDescription\" />\r\n        </fieldset>\r\n        <fieldset class=\"form-group\">\r\n            <label for=\"videoUrl\">Url:</label>\r\n            <input type=\"text\" class=\"form-control\" [ngModel]=\"video.url\" (ngModelChange)=\"validateVideoUrl($event)\" name=\"video.url\"\r\n                placeholder=\"Url\" id=\"videoUrl\" />\r\n        </fieldset>\r\n        <fieldset class=\"form-group\">\r\n            <label for=\"videoOrigin\">Origin:</label>\r\n            <select class=\"form-control\" [(ngModel)]=\"video.videoOrigin\" name=\"video.videoOrigin\">\r\n                <option *ngFor=\"let origin of videoOrigins | keys\" [value]=\"origin.key\">{{origin.value}}</option>\r\n            </select>\r\n        </fieldset>\r\n        <fieldset class=\"form-group\">\r\n            <label>Thumbnail Image:</label>\r\n            <img [src]=\"video.thumbUrl\" />\r\n        </fieldset>\r\n        <button class=\"btn btn-primary\" type=\"submit\">Ok</button>\r\n        <br /> Form: {{ form.value | json}}\r\n        <br /> Video: {{ video | json }}\r\n    </form>\r\n    <button class=\"btn btn-primary\">Back</button>\r\n</div>\r\n<div class=\"container\" [innerHtml]=\"preview?.html | safe: 'html'\">\r\n\r\n    <hr />\r\n    <!--<div *ngIf=\"displayMode === 'watch'\">\r\n        <video-watch [video]=\"videoDetails\">\r\n        </video-watch>\r\n    </div>\r\n    <div *ngIf=\"displayMode !== 'watch'\">\r\n        <form [ngFormModel]=\"videoForm\" id=\"video-details-add\" *ngIf=\"videoDetails\" (ngSubmit)=\"saveVideo(videoForm.value)\">\r\n            \r\n            <fieldset class=\"form-group\">\r\n                <label>Rating: </label>\r\n                <input class=\"form-control\" placeholder=\"rating\" [(ngModel)]=\"videoDetails.rating\" ngControl=\"rating\" />\r\n                <span *ngIf=\"!videoForm.controls.rating?.valid\">\r\n                The rating must be between 0 and 5!\r\n            </span>\r\n            </fieldset>\r\n            <fieldset class=\"form-group\">\r\n                <label>url: </label>\r\n                <input class=\"form-control\" placeholder=\"url\" [(ngModel)]=\"videoDetails.url\" ngControl=\"url\" />\r\n                <ul *ngIf=\"!videoForm.controls.url?.valid\">\r\n                    The URL is invalid. Possible issues:<br />\r\n                    <li *ngIf=\"videoForm.controls.url?.emptyUrl\">\r\n                        The URL cannot be empty\r\n                    </li>\r\n                    <li *ngIf=\"videoForm.controls.url?.invalidUrl\">\r\n                        The URL format was not recognized by the system.\r\n                    </li>\r\n                </ul>\r\n            </fieldset>\r\n            <fieldset>\r\n                <label for=\"VideoOrigin\">Source:</label>\r\n                <select class=\"form-control\" [(ngModel)]=\"videoDetails.videoOrigin\" ngControl=\"videoOrigin\">\r\n                <option *ngFor=\"let origin of videoOrigins | keys\" [value]=\"origin.key\">{{origin.value}}</option>\r\n            </select>\r\n            </fieldset>\r\n\r\n            <button type=\"submit\" class=\"ui button\">Submit</button>\r\n        </form>\r\n    </div>-->\r\n</div>";
 
 /***/ }),
 /* 88 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" *ngIf=\"videos\">\r\n    <!--(click)=\"onVideoSelected(video)\"-->\r\n\r\n    <h1> Hello from video-list component </h1>\r\n\r\n    <div class=\"row\" *ngFor=\"let video of videos | async\">\r\n        <div class=\"col-md-4 col-sm-6\">\r\n            <div class=\"thumbnail\">\r\n                <img [src]=\"video.thumbUrl\" />\r\n            </div>\r\n        </div>\r\n        <div class=\"col-md-8 col-sm-6\">\r\n            <h3>{{video.title}}</h3>\r\n            <p><strong>Original Title: </strong>{{video.originalTitle}}</p>\r\n\r\n            <div *ngIf=\"video.description\">\r\n                <p><strong>Original Description: </strong>{{video.originalDescription}}</p>\r\n                <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">Play</a>\r\n            </div>\r\n            <div *ngIf=\"!video.description && video.originalDescription\">\r\n                <p><strong>Original Description: </strong>{{video.originalDescription}}</p>\r\n            </div>\r\n            <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">Play</a>\r\n                <a [routerLink]=\"['/video-details/', video.id]\" class=\"btn btn-default\" role=\"button\">Edit</a></p>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n        <a [routerLink]=\"['/video-details/', 0]\">Add\r\n                        </a>\r\n        <!--<div class=\"col-sm-6 col-md-3\" *ngFor=\" let video of videos \">\r\n            <div class=\"thumbnail\">\r\n                <p *ngIf=\"!videos\"><em>Loading...</em></p>-->\r\n\r\n        <!--<table class='table'>\r\n                    <thead>\r\n                        <tr>\r\n                            <th>Created</th>\r\n                            <th>Category</th>\r\n                            <th>Name</th>\r\n                            <th>Edit</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr *ngFor=\"let video of videos\">\r\n                            <td>{{ video.createdDate }}</td>\r\n                            <td>{{ video.category }}</td>\r\n                            <td>{{ video.name }}</td>\r\n                            <td><a [routerLink]=\"['/video-details', video.name]\">Details </a></td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>-->\r\n\r\n\r\n        <!--<img *ngIf=\"video.thumbUrl\" [src]=\"video.thumbUrl\" />\r\n                <div class=\"caption\">\r\n                    <h3>\r\n                        <a [routerLink] = \"['Video', {mode: 'watch', id: video._id}]\">\r\n                        {{video.title}}\r\n                        </a>\r\n                        </h3>\r\n                    <p>Length: {{video.length}}</p>\r\n                    <p>Watched: {{video.watchedCount}}</p>\r\n                    <p>Rating: {{video.rating}}</p>\r\n                    <p><a [href]=\"video.localUrl\" class=\"btn btn-primary\" role=\"button\">Watch</a> <a [href]=\"video.url\" class=\"btn btn-default\"\r\n                            role=\"button\">Watch</a></p>\r\n                </div>-->\r\n        <!--</div>\r\n        </div>-->\r\n    </div>\r\n</div>";
+module.exports = "<div class=\"container\" *ngIf=\"videos\">\r\n    <!--(click)=\"onVideoSelected(video)\"-->\r\n\r\n    <h1> Hello from video-list component </h1>\r\n\r\n    <div class=\"row\" *ngFor=\"let video of videos | async\">\r\n        <div class=\"col-md-4 col-sm-6\">\r\n            <div class=\"thumbnail\">\r\n                <img [src]=\"video.thumbUrl\" />\r\n            </div>\r\n        </div>\r\n        <div class=\"col-md-8 col-sm-6\">\r\n            <h3>{{video.title}}</h3>\r\n            <p><strong>Original Title: </strong>{{video.originalTitle}}</p>\r\n\r\n            <div *ngIf=\"video.description\">\r\n                <p><strong>Description: </strong>{{video.description}}</p>\r\n            </div>\r\n            <div *ngIf=\"!video.description\">\r\n                <p><strong>Description: </strong>{{video.originalDescription}}</p>\r\n            </div>\r\n            <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">Play</a>\r\n                <a [routerLink]=\"['/video-details/', video.id]\" class=\"btn btn-default\" role=\"button\">Edit</a></p>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n        <a [routerLink]=\"['/video-details/', 0]\">Add\r\n                        </a>\r\n        <!--<div class=\"col-sm-6 col-md-3\" *ngFor=\" let video of videos \">\r\n            <div class=\"thumbnail\">\r\n                <p *ngIf=\"!videos\"><em>Loading...</em></p>-->\r\n\r\n        <!--<table class='table'>\r\n                    <thead>\r\n                        <tr>\r\n                            <th>Created</th>\r\n                            <th>Category</th>\r\n                            <th>Name</th>\r\n                            <th>Edit</th>\r\n                        </tr>\r\n                    </thead>\r\n                    <tbody>\r\n                        <tr *ngFor=\"let video of videos\">\r\n                            <td>{{ video.createdDate }}</td>\r\n                            <td>{{ video.category }}</td>\r\n                            <td>{{ video.name }}</td>\r\n                            <td><a [routerLink]=\"['/video-details', video.name]\">Details </a></td>\r\n                        </tr>\r\n                    </tbody>\r\n                </table>-->\r\n\r\n\r\n        <!--<img *ngIf=\"video.thumbUrl\" [src]=\"video.thumbUrl\" />\r\n                <div class=\"caption\">\r\n                    <h3>\r\n                        <a [routerLink] = \"['Video', {mode: 'watch', id: video._id}]\">\r\n                        {{video.title}}\r\n                        </a>\r\n                        </h3>\r\n                    <p>Length: {{video.length}}</p>\r\n                    <p>Watched: {{video.watchedCount}}</p>\r\n                    <p>Rating: {{video.rating}}</p>\r\n                    <p><a [href]=\"video.localUrl\" class=\"btn btn-primary\" role=\"button\">Watch</a> <a [href]=\"video.url\" class=\"btn btn-default\"\r\n                            role=\"button\">Watch</a></p>\r\n                </div>-->\r\n        <!--</div>\r\n        </div>-->\r\n    </div>\r\n</div>";
 
 /***/ }),
 /* 89 */

@@ -9,7 +9,7 @@ import { AppModule } from './app/app.module';
 enableProdMode();
 const platform = platformNodeDynamic();
 
-export default createServerRenderer(params => {
+export default createServerRenderer((params => {
     return new Promise<RenderResult>((resolve, reject) => {
         const requestZone = Zone.current.fork({
             name: 'angular-universal request',
@@ -31,4 +31,4 @@ export default createServerRenderer(params => {
             resolve({ html: html });
         }, reject);
     });
-});
+}) as BootFunc);
