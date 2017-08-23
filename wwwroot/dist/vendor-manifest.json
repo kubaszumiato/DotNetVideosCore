@@ -3421,11 +3421,7 @@
         "NoPreloading",
         "RouterPreloader"
       ]
-    },
-    "./node_modules/angular2-universal/browser/browser.js": {
-      "id": 280,
-      "meta": {}
-    },
+    },    
     "./node_modules/asn1.js/lib/asn1/base/buffer.js": {
       "id": 281,
       "meta": {}
@@ -3679,14 +3675,6 @@
         "VERSION",
         "__router_private__"
       ]
-    },
-    "./node_modules/angular2-universal-polyfills/browser.js": {
-      "id": 333,
-      "meta": {}
-    },
-    "./node_modules/angular2-universal/browser/index.js": {
-      "id": 334,
-      "meta": {}
     },
     "./node_modules/bootstrap/dist/js/npm.js": {
       "id": 335,
@@ -5119,23 +5107,7 @@
       "exports": [
         "VERSION"
       ]
-    },
-    "./node_modules/angular2-universal-polyfills/zone-browser.js": {
-      "id": 452,
-      "meta": {}
-    },
-    "./node_modules/angular2-universal/browser/env.js": {
-      "id": 453,
-      "meta": {}
-    },
-    "./node_modules/angular2-universal/browser/universal-module.js": {
-      "id": 454,
-      "meta": {}
-    },
-    "./node_modules/angular2-universal/common/index.js": {
-      "id": 455,
-      "meta": {}
-    },
+    },    
     "./node_modules/asn1.js/lib/asn1/api.js": {
       "id": 456,
       "meta": {}

@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { UniversalModule } from 'angular2-universal';
-import { AppComponent } from './app/app.component'
-import { NavMenuComponent } from './navmenu/navmenu.component';
-import { HomeComponent } from './home/home.component';
-import { FetchDataComponent } from './fetchdata/fetchdata.component';
-import { CounterComponent } from './counter/counter.component';
+
+import { AppComponent } from './components/app/app.component';
+import { NavMenuComponent } from './components/navmenu/navmenu.component';
+import { HomeComponent } from './components/home/home.component';
+import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
+import { CounterComponent } from './components/counter/counter.component';
+
 import { VideosModule } from './videos/videos.module';
 
 @NgModule({
-    bootstrap: [ AppComponent ],
     declarations: [
         AppComponent,
         NavMenuComponent,
@@ -18,8 +21,11 @@ import { VideosModule } from './videos/videos.module';
         HomeComponent
     ],
     imports: [
-        UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
+        
         VideosModule,
+        CommonModule,
+        HttpModule,
+        FormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
@@ -29,5 +35,5 @@ import { VideosModule } from './videos/videos.module';
         ])
     ]
 })
-export class AppModule {
+export class AppModuleShared {
 }

@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+
 using Microsoft.Extensions.Logging;
 using AutoMapper;
 using DotNetVideosCore.Repositories;
@@ -26,7 +29,7 @@ namespace DotNetVideosCore
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -38,12 +41,7 @@ namespace DotNetVideosCore
                     jsonOptions.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
                 });
 
-            //var config = new AutoMapper.MapperConfiguration( cfg =>
-            //{
-            //    cfg.CreateMap<DotNetVideosCore.Dtos.VideoDto, DotNetVideosCore.Models.Video>();
-            //    cfg.CreateMap<DotNetVideosCore.Models.Video, DotNetVideosCore.Dtos.VideoDto>();
-            //});
-            //var mapper = config.CreateMapper();
+
             services.AddAutoMapper();
 
             services.Configure<Settings>(options =>
