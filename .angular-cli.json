@@ -7,8 +7,6 @@
     {
       "root": "ClientApp",
       "outDir": "dist",
-
-
       "scripts": []
     }
   ],
