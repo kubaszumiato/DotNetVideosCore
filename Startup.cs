@@ -14,6 +14,9 @@ using Microsoft.Extensions.Logging;
 using AutoMapper;
 using DotNetVideosCore.Repositories;
 using DotNetVideosCore.Interfaces.Repositories;
+using DotNetVideosCore.Interfaces.OEmbed;
+using DotNetVideosCore.Models;
+
 
 namespace DotNetVideosCore
 {
@@ -52,6 +55,10 @@ namespace DotNetVideosCore
             
 
             services.AddTransient<IVideosRepository, VideosRepository>();
+            services.AddTransient<IOEmbedRepository, OEmbedRepository>();
+
+            services.AddTransient<IOEmbedProvider, OEmbedYouTubeProvider>();
+            services.AddTransient<IOEmbedProvider, OEmbedVimeoProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

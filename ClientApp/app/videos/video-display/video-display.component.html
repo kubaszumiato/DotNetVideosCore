@@ -1,0 +1,35 @@
+<h1> {{video?.title}} </h1>
+
+<h4> {{video?.originalTitle }} </h4> 
+
+<p>  {{video?.originalDescription}}</p>
+
+<p>
+    {{video?.description}}
+</p>
+
+<pre>
+    {{ video | json}}
+</pre>
+<p> This video has been originally posted by:
+    <a [href]="video?.originalAuthorUrl | safe: 'url'">
+        {{video?.originalAuthor}}
+    </a>
+</p>
+<!-- <video-youtube *ngIf="videoOrigins && videoOrigins[video?.videoOrigin] === 'YouTube' " [video]="video">
+</video-youtube> -->
+
+<!-- *ngIf="videoOrigins && videoOrigins[video?.videoOrigin] === 'Vimeo' " -->
+<div style="clear:both;"></div>
+<video-watch *ngIf="video" [video]="video" style="max-width:100%"></video-watch>
+
+<!-- <div *ngIf="videoOrigins[video?.videoOrigin] === 'Vimeo' ">
+    <video-vimeo [video]="video">
+    </video-vimeo>
+</div> -->
+
+
+<a *ngIf="video" [routerLink]="['/video-details', this.video?.id]" class="btn btn-primary" role="button">Edit</a>
+
+
+<a [routerLink]="['/video-list']" class="btn btn-primary" role="button">Back</a>

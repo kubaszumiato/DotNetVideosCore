@@ -27,10 +27,16 @@
             <img [src]="video.thumbUrl" />
         </fieldset>
         <button class="btn btn-primary" type="submit">Ok</button>
-        <br /> Form JSON: {{ form.value | json}}
-        <br /> Video JSON: {{ video | json }}
+        <br /> Form JSON: 
+        <pre>
+                {{ form.value | json}}
+            </pre>
+        <br /> Video JSON: 
+        <pre>
+                {{ video | json }}
+        </pre>
     </form>
-    <button class="btn btn-primary">Back</button>
+    <a [routerLink]="['/video-list']" class="btn btn-primary" role="button">Back</a>
 </div>
 <div class="container" [innerHtml]="preview?.html | safe: 'html'">
 

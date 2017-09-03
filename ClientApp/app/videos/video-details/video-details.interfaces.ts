@@ -40,6 +40,7 @@ export interface IVideo {
   //createdDate : string;
   uploadedDate : string;
   //category : number;
-
+  originalAuthor: string;
+  originalAuthorUrl: string;
 
 };

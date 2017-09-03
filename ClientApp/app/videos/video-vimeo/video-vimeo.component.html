@@ -1,5 +1,1 @@
-<iframe 
-[src]="video?.url" 
-width="640" height="390"
-frameborder="0" 
-webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<div class="container" [innerHtml]="preview?.html | safe: 'html'"></div>

@@ -3,13 +3,17 @@
 
     <h1> Trending videos </h1>
 
-    <div class="row" *ngFor="let video of videos | async">
+    <div (click)="onVideoSelected(video.id)" class="row" *ngFor="let video of videos | async">
+        
         <div class="col-md-4 col-sm-6">
             <div class="thumbnail">
-                <img [src]="video.thumbUrl" />
+                <img [src]="video.thumbUrl" style="max-width: 100%; max-height: 100%;" />
             </div>
         </div>
         <div class="col-md-8 col-sm-6">
+            <pre>
+                {{ video | json}}
+            </pre>
             <h3>{{video.title}}</h3>
             <p><strong>Original Title: </strong>{{video.originalTitle}}</p>
 
@@ -19,7 +23,7 @@
             <div *ngIf="!video.description">
                 <p><strong>Description: </strong>{{video.originalDescription}}</p>
             </div>
-            <p><a href="#" class="btn btn-primary" role="button">Play</a>
+            <p><a [routerLink]="['/video-display/', video.id]" class="btn btn-primary" role="button">Play</a>
                 <a [routerLink]="['/video-details/', video.id]" class="btn btn-default" role="button">Edit</a></p>
         </div>
     </div>

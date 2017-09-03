@@ -3,8 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule} from '@angular/forms';
 
-import { VideoListComponent } from './video-list/video-list.component';
-import { VideoDetailsComponent } from './video-details/video-details.component';
+import { VideoListComponent,
+        VideoDetailsComponent,
+        VideoDisplayComponent,
+        VideoWatchComponent,
+        VideoVimeoComponent,
+        VideoYouTubeComponent } from './video/videos.components';
 import { VideosRoutingModule } from './videos-routing.module';
 import { VideoService, oEmbedService } from './video/video.services';
 import { SafePipe } from '../pipes/safe.html.pipe';
@@ -20,7 +24,11 @@ import { EnumKeysPipe } from '../pipes/enum.keys.pipe';
 declarations: [
     SafePipe, EnumKeysPipe,
     VideoListComponent,
-    VideoDetailsComponent
+    VideoDetailsComponent,
+    VideoDisplayComponent,
+    VideoWatchComponent,
+    VideoYouTubeComponent,
+    VideoVimeoComponent
 ],
 providers: [VideoService, oEmbedService]
 })

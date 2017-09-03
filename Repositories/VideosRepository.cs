@@ -7,6 +7,7 @@ using MongoDB.Bson.Serialization;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using System;
+using System.Net.Http;
 
 namespace DotNetVideosCore.Repositories
 {
@@ -30,6 +31,8 @@ namespace DotNetVideosCore.Repositories
         {
             return await _context.Videos.Find(new BsonDocument()).ToListAsync();
         }
+
+        
 
         public async Task<Video> Get(string id)
         {

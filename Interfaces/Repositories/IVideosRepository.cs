@@ -10,6 +10,7 @@ namespace DotNetVideosCore.Interfaces.Repositories
         Task<IEnumerable<Video>> Filter(string query);
 
         Task<Video> Get(string id);
+        
         Task<bool> CheckIfExists(string id);
 
 

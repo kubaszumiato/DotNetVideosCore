@@ -12,6 +12,7 @@ import { oEmbedYouTube } from './oembed-youtube';
 export class oEmbedService
 {
     private providers : oEmbedDictionary = {}
+    private oEmbedLocalUrl = "/api/oembed";
     constructor(private http: Http ) {
         this.providers["Vimeo"] = new oEmbedVimeo();;
         this.providers["YouTube"] = new oEmbedYouTube();
@@ -36,6 +37,7 @@ export class oEmbedService
     }
 
     checkVideoOEmbed(url: string, providerName = ""): Observable<oEmbed> {
+
         if (url == "" || url == null || url == undefined)
         {
             throw new RangeError("Url cannot be empty");
@@ -46,11 +48,15 @@ export class oEmbedService
         }
         if (providerName == "")
         {
-            throw new RangeError("Couldn't match the video provider by URL");
+            console.log("Couldn't match the video provider by URL, on the client side");
+            console.log("Calling get content by url: " + url);
         }
-        console.log("calling get content by url, for: " + url);
+        else
+        {
+            console.log("Calling server for OEmbed by Url: " + url + " and provider: " + providerName);
+        }
 
-        let oEmbedUrl = this.providers[providerName].getContentUrl(url);
+        let oEmbedUrl = this.oEmbedLocalUrl + (providerName === null?"/" + encodeURIComponent(url):"/" + providerName + "/" + encodeURIComponent(url));
 
         return this.http.get(oEmbedUrl)
         .map((res: Response) => res.json());

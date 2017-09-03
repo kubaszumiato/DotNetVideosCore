@@ -25,5 +25,8 @@ namespace DotNetVideosCore.Models
         public DateTime UploadedDate { get; set; }
         //public VideoCategoryEnum Category { get; set; }
         public User Owner { get; set; }
+
+        public string OriginalAuthor { get; set; }
+        public string OriginalAuthorUrl { get; set; }
     }
 }

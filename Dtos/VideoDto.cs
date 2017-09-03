@@ -14,6 +14,9 @@ namespace DotNetVideosCore.Dtos
         public string ThumbUrl { get; set; }
         public string OriginalTitle { get; set; }
         public string OriginalDescription { get; set; }
+        public string OriginalAuthor { get; set; }
+        public string OriginalAuthorUrl { get; set; }
+        
         //public string LocalUrl { get; set; }
         public int VideoLength { get; set; }
         public VideoOriginEnum VideoOrigin { get; set; }

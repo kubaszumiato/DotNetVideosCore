@@ -34,7 +34,7 @@ export class oEmbedYouTube implements oEmbed {
 
     public getContentUrl(url: string): string {
         var oEmbedBaseUrl = "http://www.youtube.com/oembed?url=";
-        var finalUrl = oEmbedBaseUrl + url;
+        var finalUrl = oEmbedBaseUrl + url + "&format=json";
         return finalUrl;
     }
 }

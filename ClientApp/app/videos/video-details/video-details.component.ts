@@ -65,8 +65,13 @@ export class VideoDetailsComponent implements OnInit {
         .subscribe(res => {
             this.preview = res;
             this.video.thumbUrl = res.thumbnail_url as string;
+            this.video.title = res.title as string;
+            this.video.description = res.description as string;
             this.video.originalTitle = res.title as string;
             this.video.originalDescription = res.description as string;
+            this.video.videoOrigin = parseInt(this.videoOrigins[res.provider_name], 10) ;
+            this.video.originalAuthor = res.author_name;
+            this.video.originalAuthorUrl = res.author_url;
             console.log(this.preview);
             },
             err => {

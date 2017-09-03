@@ -47,7 +47,7 @@ module.exports = (env) => {
             new webpack.optimize.UglifyJsPlugin(),
             new AotPlugin({
                 tsConfigPath: './tsconfig.json',
-                entryModule: path.join(__dirname, 'ClientApp/app/app.module.browser#AppModule'),
+                entryModule: path.join(__dirname, 'ClientApp/app/app.browser.module#AppModule'),
                 exclude: ['./**/*.server.ts']
             })
         ])

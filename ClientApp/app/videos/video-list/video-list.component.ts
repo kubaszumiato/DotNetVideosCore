@@ -36,8 +36,13 @@ export class VideoListComponent implements OnInit {
     public selectedVideo: IVideo;
     public videos: Observable<IVideo>;
 
-    constructor(private http: Http, private videoService: VideoService, private oembedService: oEmbedService) {
+    constructor(private http: Http,
+                private router : Router, 
+                private videoService: VideoService, 
+                private oembedService: oEmbedService) {
     }
+
+
 
     // constructor(
     //     private _router: Router//,
@@ -50,12 +55,15 @@ export class VideoListComponent implements OnInit {
     //         // error => console.log(error)
     //         // );
     //     }
-
+    
     //from-code approach
-    onVideoSelected(selection: IVideo) {
-        this.selectedVideo = selection;
-        console.log('selected video with id: ' + selection.id);
-       // this._router.navigate(['Video', { mode: 'watch', id: selection.id }]);
+    onVideoSelected(videoId: string) {
+        
+        console.log('selected video with id: ' + videoId);
+        
+        this.router.navigate(['/video-display/', videoId])
+            .then(_ => console.log('navigated to video with id: ' + videoId));
+
     }
 
 
