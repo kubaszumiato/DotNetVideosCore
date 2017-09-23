@@ -20,6 +20,9 @@ import { EnumKeysPipe } from '../pipes/enum.keys.pipe';
         VideosRoutingModule,
         FormsModule
     ]
+    , exports: [
+        VideoListComponent
+    ]
     ,
 declarations: [
     SafePipe, EnumKeysPipe,

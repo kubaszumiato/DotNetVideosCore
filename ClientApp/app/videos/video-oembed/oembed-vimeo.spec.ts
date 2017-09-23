@@ -1,3 +1,4 @@
+/// <reference path="../../../../node_modules/@types/jasmine/index.d.ts" />
 import { oEmbedVimeo } from './oembed-vimeo';
 
 describe('oEmbedVimeo object', () => {
@@ -25,7 +26,7 @@ describe('URL validation', () => {
     });
 
     it('accepts proper urls for albums', () => {
-        //https://vimeo.com › Dream Film Studio › Videos
+        //https://vimeo.com ï¿½ Dream Film Studio ï¿½ Videos
     });
 
     it('accepts proper urls for channels', () => {

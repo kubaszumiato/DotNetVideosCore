@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
 
 import { VideosModule } from './videos/videos.module';
 
@@ -16,12 +14,9 @@ import { VideosModule } from './videos/videos.module';
     declarations: [
         AppComponent,
         NavMenuComponent,
-        CounterComponent,
-        FetchDataComponent,
         HomeComponent
     ],
-    imports: [
-        
+    imports: [        
         VideosModule,
         CommonModule,
         HttpModule,
@@ -29,8 +24,6 @@ import { VideosModule } from './videos/videos.module';
         RouterModule.forRoot([
             // { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

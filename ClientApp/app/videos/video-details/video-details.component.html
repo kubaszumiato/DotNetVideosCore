@@ -12,6 +12,10 @@
                 id="videoDescription" />
         </fieldset>
         <fieldset class="form-group">
+            <label for="videoRating">Rating:</label>
+            <input type="text" class="form-control" [(ngModel)]="video.rating" name="video.rating" placeholder="Rating" id="videoRating" />
+        </fieldset>
+        <fieldset class="form-group">
             <label for="videoUrl">Url:</label>
             <input type="text" class="form-control" [ngModel]="video.url" (ngModelChange)="validateVideoUrl($event)" name="video.url"
                 placeholder="Url" id="videoUrl" />
