@@ -26,6 +26,36 @@ import { SafePipe } from '../../pipes/safe.html.pipe';
     })
 export class VideoDetailsComponent implements OnInit {
 
+    //value used with custom icons demo above
+    private rateValueExample1:number = 5;
+    //value used with custom icons demo above
+    private rateValueExample2:number = 2;
+    //the maximum allowed value
+    private maxRateValue:number = 10;
+    //contains the current value entred by the user
+    private currentRate:number = 7;
+    //make the rating component readonly
+    private isRatingReadonly:boolean = false;
+    private overStar:number| any;
+    private ratingPercent:number;
+
+    private ratingStatesItems:any = [
+        {stateOn: 'glyphicon-ok-sign', stateOff: 'glyphicon-ok-circle'},
+        {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-star-empty'},
+        {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+        {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'},
+        {stateOn: 'glyphicon-heart', stateOff: 'glyphicon-ban-circle'}
+    ];
+    //reset the rating value to null
+    private resetRatingStar() {
+        this.overStar = null;
+    }
+    //call this method when over a star
+    private overStarDoSomething(value:number):void {
+        this.overStar = value;
+        this.ratingPercent = 100 * (value / this.maxRateValue);
+    };
+
     private video: IVideo;
     private videoOrigins = VideoOriginEnum;
     private videoUrl = new Subject<string>();

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { StarRatingModule } from 'angular-star-rating';
 
 import { VideoListComponent,
         VideoDetailsComponent,
@@ -13,12 +14,15 @@ import { VideosRoutingModule } from './videos-routing.module';
 import { VideoService, oEmbedService } from './video/video.services';
 import { SafePipe } from '../pipes/safe.html.pipe';
 import { EnumKeysPipe } from '../pipes/enum.keys.pipe';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
     imports: [
         CommonModule,
         VideosRoutingModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule, 
+        StarRatingModule.forRoot()
     ]
     , exports: [
         VideoListComponent
@@ -31,7 +35,8 @@ declarations: [
     VideoDisplayComponent,
     VideoWatchComponent,
     VideoYouTubeComponent,
-    VideoVimeoComponent
+    VideoVimeoComponent,
+    RatingComponent
 ],
 providers: [VideoService, oEmbedService]
 })

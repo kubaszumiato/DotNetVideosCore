@@ -28,6 +28,30 @@
     </video-vimeo>
 </div> -->
 
+<!-- <h4 style="color: #00b0e8">Angular 2 Rating - Stars Example</h4>
+<h5>Current Rate: <b>{{video. rating}}</b></h5>
+<rating [(ngModel)]="video.rating" [max]="5" [readonly]="isRatingReadonly"
+        (onHover)="overStarDoSomething($event)" (onLeave)="resetRatingStar($event)"
+        [titles]="['one','two','three']"></rating>
+<span class="label"
+      [ngClass]="{'label-warning': ratingPercent<30, 'label-info': ratingPercent>=30 && ratingPercent<70, 'label-success': ratingPercent>=70}"
+      [ngStyle]="{display: (overStar && !isRatingReadonly) ? 'inline' : 'none'}">{{ratingPercent}}%</span>
+<hr/> -->
+
+<h4 style="color: #00b0e8">Angular 2 Rating With <b>Custom icons</b></h4>
+<h5><b>(<i>Current Rate:</i> {{video. rating}})</b></h5>
+<div>
+  <rating [(ngModel)]="video.rating" max="5" stateOn="glyphicon-heart"
+          stateOff="glyphicon-ok-circle"></rating>
+</div>
+<hr/>
+<!-- 
+<h4 style="color: #00b0e8">Angular 2 Rating With <b>Custom icons</b></h4>
+<h5><b>(<i>Current Rate:</i> {{video. rating}})</b></h5>
+<div>
+  <rating [(ngModel)]="video.rating" [ratingStates]="ratingStatesItems"></rating>
+</div> -->
+
 
 <a *ngIf="video" [routerLink]="['/video-details', this.video?.id]" class="btn btn-primary" role="button">Edit</a>
 

@@ -80,7 +80,9 @@ module.exports = (env) => {
             libraryTarget: 'commonjs2',
         },
         module: {
-            rules: [ { test: /\.css(\?|$)/, use: ['to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize' ] } ]
+            rules: [ 
+                { test: /\.css(\?|$)/, use: ['to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize' ] }
+                // ,                { test: /\.scss$/, use: ["to-string-loader", "css-loader", "sass-loader"]} ]
         },
         plugins: [
             new webpack.DllPlugin({

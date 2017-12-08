@@ -21,7 +21,10 @@
                 <p><strong>Description: </strong>{{video.originalDescription}}</p>
             </div>
             <div *ngIf="video.rating">
-                <p><strong>Rating: </strong> {{video.rating}}</p>    
+                <p><strong>Rating: </strong> {{video.rating}}</p> 
+                <rating [(ngModel)]="video.rating" [max]="5" (onHover)="overStarDoSomething($event)" (onLeave)="resetRatingStar($event)"
+                [titles]="['one','two','three', 'cztery', 'funf']"></rating>
+        
             </div>
             <p><a [routerLink]="['/video-display/', video.id]" class="btn btn-primary" role="button">Play</a>
                 <a [routerLink]="['/video-details/', video.id]" class="btn btn-default" role="button">Edit</a></p>

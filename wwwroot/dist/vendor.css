@@ -39,7 +39,7 @@ audio:not([controls]) {
   height: 0;
 }
 [hidden],
-template {
+ng-template {
   display: none;
 }
 a {
